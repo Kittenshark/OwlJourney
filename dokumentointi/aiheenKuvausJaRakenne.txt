@@ -1,0 +1,12 @@
+Aihe: Luolamainen peli
+
+Pollon taytyy paasta pelikentan toiselta puolelta toiselle puolelle. Kentalla on seinia ja muita esteita
+seka piilotettuja miinoja. Jos pollo astuu miinaan, kay huonosti eika pollo paase kotiin.
+
+Kenttia tulee useampi ja haastavuus nousee miinojen maaran kasvulla seka mahdollisesti kentan olemuksen
+mukaan. 
+
+Pelikentalla liikkuminen tapahtuu nappaimistolla. Kenttien ei ole tarkoitus olla mahdottomia. Jos edessa on 
+kaytava, kaytavan voi paasta paasta paahan. Vierekkain ei saa olla miinaseinaa.
+
+Yleiskatsomus. Jotkin asiat voivat muuttua, mutta varsinainen idean on tarkoitus pysya samana.
