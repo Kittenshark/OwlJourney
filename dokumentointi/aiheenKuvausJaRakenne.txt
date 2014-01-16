@@ -1,12 +1,27 @@
-Aihe: Luolamainen peli
+﻿Aihe: Luolamainen peli
 
-Pollon taytyy paasta pelikentan toiselta puolelta toiselle puolelle. Kentalla on seinia ja muita esteita
-seka piilotettuja miinoja. Jos pollo astuu miinaan, kay huonosti eika pollo paase kotiin.
+Idea: Pelihahmona on pollo. Pollon on liikuttava pelikentan toiselta laidalta toiselle laidalle. 
+Reitti, jota pollo kulkee ei kuitenkaan ole taysin turvallinen. Pelikenttaan on piilotettu useita 
+miinoja, joihin ei tule astua.
 
-Kenttia tulee useampi ja haastavuus nousee miinojen maaran kasvulla seka mahdollisesti kentan olemuksen
-mukaan. 
+Tasoja on useampi. Korkeammilla tasoilla on enemman miinoja ja tiukkoja valintoja, kumman reitin 
+valitsee (esim. vaaralla reitilla miinaa ei voi valttaa).
 
-Pelikentalla liikkuminen tapahtuu nappaimistolla. Kenttien ei ole tarkoitus olla mahdottomia. Jos edessa on 
-kaytava, kaytavan voi paasta paasta paahan. Vierekkain ei saa olla miinaseinaa.
+Miinoja on erilaisia.
+	- taysin nakymaton miina
+	- nakyvia miinoja
+	- nakyvia miinoja, mitka eivat oikeasti ole miinoja
 
-Yleiskatsomus. Jotkin asiat voivat muuttua, mutta varsinainen idean on tarkoitus pysya samana.
+	(mahdollisesti lisaa miinoja projektin edetessa. Voisi olla esim. ajastimeen liitettyja miinoja, 
+	liikkuvia, takaa-ajavia jne. paljon vaihtoehtoja. Myos alueita, joilla miinojen paikka arvotaan ja 
+	uudelleen yrittaessa paikat vaihtuvat)
+
+Pelikentalla liikkuminen tapahtuu nappaimistolla. Kenttien ei ole tarkoitus olla mahdottomia. Jos taytyy 
+kulkea kaytavan kautta, ei missaan tapauksessa edessa ole lapaisematonta miinaseinaa.
+
+Talla hetkelle pollolla on tarkoitus olla kolme henkea. Jos osuu miinaan, menettaa yhden elaman ja joutuu
+aloittamaan tason uudelleen. Kun elamat loppuvat, koko peli pitaa aloittaa alusta. Vaihtoehtona on antaa 
+pollolle elamapisteita (hit points). Jos pollo osuu miinaan, tasoa ei joudu aloittamaan alusta ennen kuin 
+koko elama menee loppuun.
+
+(pahoittelut aakkosten puuttumisesta toistaiseksi)
