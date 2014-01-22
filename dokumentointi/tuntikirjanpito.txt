@@ -1,5 +1,8 @@
 2014
 
-14.1  	noim 1h 	githubin toiminnan hakkaamiseen 
+14.1  	noin 1h 	githubin toiminnan hakkaamiseen 
 15.1	40min Netbeans toimintaan ja aiheen kuvauksen lisays
 16.1	15min Kuvauksen tarkennus, ideointia
+17.1	70min koodauksen aloitus, ei suurta
+20.1	80min koodausta, metodeita, muuttujia sun muuta
+22.1	142min suurimmiten testien kirjoittamista
