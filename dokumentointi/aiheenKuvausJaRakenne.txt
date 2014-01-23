@@ -25,3 +25,9 @@ pollolle elamapisteita (hit points). Jos pollo osuu miinaan, tasoa ei joudu aloi
 koko elama menee loppuun.
 
 (pahoittelut aakkosten puuttumisesta toistaiseksi)
+
+
+Muutos -> 
+	Miinat tulevat muuttumaan ketuiksi
+	Sopii paremmin pelin "teemaan"
+	muuten ei muutu
