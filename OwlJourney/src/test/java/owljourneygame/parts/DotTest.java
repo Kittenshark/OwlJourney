@@ -33,23 +33,15 @@ public class DotTest {
     }
 
     @Test
-    public void dotGetXGivesRightNumber(){
+    public void dotIsRight(){
         assertEquals(dot.getX(), 10);
-        
-    }
-    
-    @Test
-    public void dotGetYGivesRightNumber(){
         assertEquals(dot.getY(), 15);
     }
     
     @Test
-    public void dotXIsRight(){
+    public void dotIsRight2(){
         assertEquals(dot.getX(), dot.x);
-    }
-    
-    @Test
-    public void dotYIsRight(){
         assertEquals(dot.getY(), dot.y);
     }
+
 }

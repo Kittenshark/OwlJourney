@@ -4,7 +4,7 @@ package owljourneygame.levels;
 
 import java.util.ArrayList;
 import owljourneygame.parts.Dot;
-import owljourneygame.parts.Goal;
+import owljourneygame.parts.FinishLine;
 import owljourneygame.parts.Mine;
 import owljourneygame.parts.Wall;
 
@@ -12,7 +12,7 @@ public class LevelOne extends LevelBase implements Printable{
     
     private ArrayList<Wall> walls;
     private ArrayList<Mine> mines;
-    private Goal goal;
+    private FinishLine goal;
     
     public LevelOne(){
         walls = new ArrayList<Wall>();
@@ -35,7 +35,7 @@ public class LevelOne extends LevelBase implements Printable{
     }
     
     public void goal(){
-        goal = new Goal(359, 11);
+        goal = new FinishLine(359, 11);
     }
     
     public ArrayList getWalls(){
@@ -46,7 +46,7 @@ public class LevelOne extends LevelBase implements Printable{
         return mines;
     }
     
-    public Goal getGoal(){
+    public FinishLine getGoal(){
         return goal;
     }
     

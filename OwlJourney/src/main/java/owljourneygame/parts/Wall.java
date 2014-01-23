@@ -1,6 +1,8 @@
 
 package owljourneygame.parts;
 
+import java.awt.Graphics;
+
 
 public class Wall extends Dot{
     private int width;
@@ -18,6 +20,10 @@ public class Wall extends Dot{
     
     public int getHeight(){
         return height;
+    }
+    
+    public void draw(Graphics graphics){
+        graphics.fillRect(super.getX(), super.getY(), width, height);
     }
     
 }

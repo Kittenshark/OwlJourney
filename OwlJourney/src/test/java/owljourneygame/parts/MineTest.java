@@ -40,24 +40,16 @@ public class MineTest {
     @After
     public void tearDown() {
     }
-
-    @Test
-    public void mineGetXGivesRightNumber(){
-        assertEquals(mine.getX(), 20);     
-    }
     
     @Test
-    public void mineGetYGivesRightNumber(){
+    public void minePositionIsRight(){
+        assertEquals(mine.getX(), 20); 
         assertEquals(mine.getY(), 35);
     }
     
     @Test
-    public void mineXIsRight(){
+    public void minePositionIsRight2(){
         assertEquals(mine.getX(), mine.x);
-    }
-    
-    @Test
-    public void mineYIsRight(){
         assertEquals(mine.getY(), mine.y);
     }
 }

@@ -77,10 +77,13 @@ public class GamePlatform {
     }
     
     public boolean moveOwl(){
-        //action listeners sun muuta
-        //left, right, up, down
-        owl.moveOwl(1, 1);
+        owl.moveOwl(10, 10);
         return false;
+        /*
+        action listeners sun muuta
+        left, right, up, down, miinus/plus etc
+        1 liikkuminen liikkuu pöllön koko koon verran
+                */
     }
 
             

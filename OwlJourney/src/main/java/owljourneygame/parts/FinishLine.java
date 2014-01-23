@@ -2,11 +2,11 @@
 
 package owljourneygame.parts;
 
-public class Goal {
+public class FinishLine {
     private int x;
     private int y;
     
-    public Goal(int x, int y){
+    public FinishLine(int x, int y){
         this.x = x;
         this.y = y;
     }

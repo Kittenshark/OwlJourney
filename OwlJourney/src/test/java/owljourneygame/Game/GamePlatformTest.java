@@ -35,23 +35,41 @@ public class GamePlatformTest {
     }
     
     @Test
-    public void OwlIsCreatedInRightPlaceX(){
+    public void owlStartingPositionIsRight(){
         assertEquals(game.getOwl().getX(), 12);
-    }
-    
-    @Test
-    public void OwlIsCreatedInRightPlaceY(){
         assertEquals(game.getOwl().getY(), 270);
     }
     
     @Test
-    public void OwlIsRightSize(){
+    public void owlIsRightSize(){
         assertEquals(game.getOwl().getSide(), 10);
     }
     
     @Test
     public void hittingMineMakesMineInactive(){
         //game.hitMine();
+    }
+    
+    @Test
+    public void movingOwlMovesOwl(){
+        game.moveOwl();
+        
+        assertEquals(game.getOwl().getX(), 22);
+        assertEquals(game.getOwl().getY(), 280);
+    }
+    
+    @Test
+    public void movingOwlSeveralTimesWorks(){
+        moveOwl();
+        
+        assertEquals(game.getOwl().getX(), 62);
+        assertEquals(game.getOwl().getY(), 320);
+    }
+    
+    public void moveOwl(){
+        for (int i=0; i<5; i++){
+            game.moveOwl();
+        }
     }
 
     

@@ -33,23 +33,10 @@ public class WallTest {
     }
     
     @Test
-    public void wallGetXGivesRightNumber(){
+    public void wallPositionIsRight(){
         assertEquals(wall.getX(), 10);
-        
-    }
-    
-    @Test
-    public void wallGetYGivesRightNumber(){
         assertEquals(wall.getY(), 5);
-    }
-    
-    @Test
-    public void wallXIsRight(){
         assertEquals(wall.getX(), wall.x);
-    }
-    
-    @Test
-    public void wallYIsRight(){
         assertEquals(wall.getY(), wall.y);
     }
     

@@ -34,28 +34,14 @@ public class OwlTest {
     }
 
     @Test
-    public void owlGetXGivesRightNumber(){
+    public void owlStartPositionIsRight(){
         assertEquals(owl.getX(), 30);
-        
-    }
-    
-    @Test
-    public void owlGetYGivesRightNumber(){
         assertEquals(owl.getY(), 35);
-    }
-    
-    @Test
-    public void owlXIsRight(){
         assertEquals(owl.getX(), owl.x);
     }
     
     @Test
-    public void owlYIsRight(){
-        assertEquals(owl.getY(), owl.y);
-    }
-    
-    @Test
-    public void owlSideisRight(){
+    public void owlSizeisRight(){
         assertEquals(owl.getSide(), 10);
     }
     
@@ -64,12 +50,6 @@ public class OwlTest {
         owl.moveOwl(10, 15);
         
         assertEquals(owl.getX(), 40);
-    }
-    
-    @Test
-    public void whenMovingOwlYIsRight(){
-        owl.moveOwl(10, 15);
-        
         assertEquals(owl.getY(), 50);
     }
     
@@ -77,11 +57,6 @@ public class OwlTest {
     public void movingOwlFiveTimesWorksX(){
         forLoopThatOwl();
         assertEquals(owl.getX(), 35);
-    }
-    
-    @Test
-    public void movingOwlFiveTimesWorksY(){
-        forLoopThatOwl();
         assertEquals(owl.getY(), 40);
     }
     
