@@ -1,58 +1,69 @@
 
 package owljourneygame.Game;
 
+import java.awt.Rectangle;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import owljourneygame.levels.LevelOne;
-import owljourneygame.levels.Printable;
+import owljourneygame.gui.UpdateGame;
+import owljourneygame.levels.AllLevels;
 import owljourneygame.parts.Dot;
+import owljourneygame.parts.FinishLine;
 import owljourneygame.parts.Mine;
 import owljourneygame.parts.Owl;
+import owljourneygame.parts.Wall;
 
-public class GamePlatform {
-    private ArrayList<Printable> levels;
-    private int whichLevel = 1;
+public class GamePlatform implements ActionListener{
+    private ArrayList<AllLevels> levels;
+    private int whichLevel;
     private Owl owl;
     private int lifepoints;
+    private UpdateGame update;
     
     public GamePlatform(){
         lifepoints = 3;
-        levels = new ArrayList<Printable>();
+        whichLevel = 0;
+        levels = new ArrayList<AllLevels>();
+       // level = new GiefLevel();
         createOwl();
         createLevels();
+        //runGame();
     }
     
     public void runGame(){
-        while (whichLevel < 2){
-            runLevels();
-            whichLevel++;
-        }
+        //turha? ...
     }
     
     public void createOwl(){
-        owl = new Owl(12, 270, 10); //ensimmäisen levelin aloituspiste, vaihtuu per level 
+        owl = new Owl(30, 240, 10); //ensimmäisen levelin aloituspiste, vaihtuu per level 
     }
     
     public Owl getOwl(){
-        return owl;//tarkoitus muuttua
+        return owl;
     }
-    
+   
     public void createLevels(){
-        //LevelOne one = new LevelOne();
-        levels.add(new LevelOne()); //level one
+        //ei tule ongelmia, jos samaa luokkaa 
+        levels.add(new AllLevels(new FinishLine(350, 30)));
+        levels.add(new AllLevels(new FinishLine(180, 40)));
     }
     
-    public void runLevels(){
-        //levels.get(whichLevel-1).printLevel(); paperiprinttaukseen
-
-
+    public AllLevels getLevel(){
+        return levels.get(whichLevel);
+    }
+    
+    public ArrayList<AllLevels> getAllLevels(){
+        return levels;
+    }
+    
+    public int getWhichLevel(){
+        return whichLevel;
     }
     
     public boolean hitWall(){
-        ArrayList<Dot> walls = new ArrayList<Dot>();
-        walls = levels.get(whichLevel-1).getWalls();
         
-        for (Dot dot : walls){
-            if (dot.getX() == owl.getX() && dot.getY() == owl.getY()){
+        for (Wall wall : levels.get(whichLevel).getWalls()){
+            if (wall.getX() == owl.getX() && wall.getY() == owl.getY()){
                 return true;    //Jos osutaan seinään, ei liikuta sen lävitse
             }
         }
@@ -60,30 +71,70 @@ public class GamePlatform {
     }
     
     public boolean hitMine(){
-        ArrayList<Mine> mines = new ArrayList<Mine>();
-        mines = levels.get(whichLevel-1).getMines();
-        
-        for (Mine mine : mines){
-            if (mine.getX() == owl.getX() && mine.getY() == owl.getY() && mine.isActive()){
-                mine.inActive(); //Jos kenttä aloitetaan alusta, kaikki miinat active ellei jotain lisafeature jos jaksaa/aikaa
-                return true;    //Jos osutaan miinaan, hahmo kuolee (tai menettää elämän)
+        Rectangle o = owl.getBounds();
+        for (Mine mine : getLevel().getMines()){
+            Rectangle m = mine.getBounds();
+            if (o.intersects(m)){
+                return true;
             }
-        }
-        return false;   
+        }  
+        return false;
     }
     
     public boolean hitGoal(){
         return false;
     }
     
-    public boolean moveOwl(){
-        owl.moveOwl(10, 10);
-        return false;
+    public void moveOwl(int side){
+        if (!wallCollision()){ //kein
+            owl.moveOwl(side);  
+        }
+        
         /*
         action listeners sun muuta
         left, right, up, down, miinus/plus etc
         1 liikkuminen liikkuu pöllön koko koon verran
                 */
+    }
+    
+    public boolean wallCollision(){
+        Rectangle o = owl.getBounds();
+        //hm
+        for (Wall wall : getLevel().getWalls()){
+            Rectangle w = wall.getBounds();
+            System.out.println(w.intersection(w));
+            if (w.intersects(o)){ //kein work yet, jos menee kokonaan sisään
+                return true;
+            }
+        }
+        
+        return false;
+    }
+    
+    //tbd later
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (hitMine()){
+            takeLives();
+        }
+        if (hitWall()){
+            
+        }
+        if (hitGoal()){
+            goNextLevel();
+        }
+        
+        update.update();
+        //collision
+    }
+
+    
+    public void takeLives(){
+        lifepoints--;
+    }
+    
+    public void goNextLevel(){
+        whichLevel++;
     }
 
             

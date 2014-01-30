@@ -2,6 +2,7 @@
 package owljourneygame.parts;
 
 import java.awt.Graphics;
+import java.awt.Rectangle;
 
 
 public class Wall extends Dot{
@@ -22,8 +23,20 @@ public class Wall extends Dot{
         return height;
     }
     
-    public void draw(Graphics graphics){
-        graphics.fillRect(super.getX(), super.getY(), width, height);
+    public boolean equals(Wall wall){
+        if (wall.getX() == x && wall.getY() == y && wall.width == width && wall.height == height){
+            return true;
+        }
+        return false;
     }
+    /*
+    public void paint(Graphics g){
+        g.fillRect(x, y, width, height);
+    }
+    */
     
+    
+    public Rectangle getBounds(){
+        return new Rectangle(x, y, width, height);
+    }
 }

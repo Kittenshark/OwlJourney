@@ -2,13 +2,16 @@
 
 package owljourneygame.levels;
 
+//ei käytössä
+
 import java.util.ArrayList;
+import owljourneygame.parts.FinishLine;
 
 public interface Printable {
-    
-    public void printLevel();
     
     public ArrayList getWalls();
     
     public ArrayList getMines();
+    
+    public FinishLine getGoal();
 }

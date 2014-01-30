@@ -1,7 +1,7 @@
 
 package owljourneygame.levels;
 
-
+//ei käytössä
 
 public abstract class LevelBase {
     

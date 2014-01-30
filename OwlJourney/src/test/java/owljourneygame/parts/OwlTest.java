@@ -37,7 +37,6 @@ public class OwlTest {
     public void owlStartPositionIsRight(){
         assertEquals(owl.getX(), 30);
         assertEquals(owl.getY(), 35);
-        assertEquals(owl.getX(), owl.x);
     }
     
     @Test
@@ -47,22 +46,22 @@ public class OwlTest {
     
     @Test
     public void whenMovingOwlXIsRight(){
-        owl.moveOwl(10, 15);
+        owl.moveOwl(2);
         
-        assertEquals(owl.getX(), 40);
-        assertEquals(owl.getY(), 50);
+        assertEquals(owl.getX(), 30);
+        assertEquals(owl.getY(), 45);
     }
     
     @Test
     public void movingOwlFiveTimesWorksX(){
         forLoopThatOwl();
-        assertEquals(owl.getX(), 35);
-        assertEquals(owl.getY(), 40);
+        assertEquals(owl.getX(), 80);
+        assertEquals(owl.getY(), 35);
     }
     
     public void forLoopThatOwl(){
         for (int i=0; i<5; i++){
-            owl.moveOwl(1, 1);
+            owl.moveOwl(0);
         }
     }
 }

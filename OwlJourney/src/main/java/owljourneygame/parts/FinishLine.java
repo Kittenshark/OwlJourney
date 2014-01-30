@@ -21,6 +21,6 @@ public class FinishLine {
     
     public int getSide(){
         return 10;
-        //goal, mine, owl sivun pituus 10, prob side muuttuja tulee tippumaan
+        //goal, mine, owl sivun pituus 10
     }
 }

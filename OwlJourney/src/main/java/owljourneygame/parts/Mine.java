@@ -1,5 +1,7 @@
 package owljourneygame.parts;
 
+import java.awt.Rectangle;
+
 public class Mine {
     protected int x;
     protected int y;
@@ -32,6 +34,10 @@ public class Mine {
     public boolean inActive(){
         active = false;
         return false;   //kun miinaan osutaan, siihen ei voi saman kentän aikana osua uudelleen(?)
+    }
+    
+    public Rectangle getBounds(){
+        return new Rectangle(x, y, side, side);
     }
 
     /*

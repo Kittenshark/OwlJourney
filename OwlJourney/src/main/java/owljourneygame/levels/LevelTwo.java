@@ -2,20 +2,19 @@
 
 package owljourneygame.levels;
 
+//ei käytössä
+
 import java.util.ArrayList;
+import owljourneygame.parts.FinishLine;
 
-public class LevelTwo extends LevelBase implements Printable{
+public class LevelTwo implements Printable{
 
-    @Override
+    //@Override
     void walls() {
     }
 
-    @Override
+    //@Override
     void mines() {
-    }
-
-    @Override
-    public void printLevel() {
     }
 
     @Override
@@ -25,6 +24,11 @@ public class LevelTwo extends LevelBase implements Printable{
 
     @Override
     public ArrayList getMines() {
+        return null;
+    }
+
+    @Override
+    public FinishLine getGoal() {
         return null;
     }
     
