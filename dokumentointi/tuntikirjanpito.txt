@@ -5,4 +5,7 @@
 16.1	15min Kuvauksen tarkennus, ideointia
 17.1	70min koodauksen aloitus, ei suurta
 20.1	80min koodausta, metodeita, muuttujia sun muuta
-22.1	142min suurimmiten testien kirjoittamista
+22.1	140min suurimmiten testien kirjoittamista
+27.1	75min
+28.1	80min tuloksetonta koodausta
+29.1	60min muutoksia luokkiin, testeihin
