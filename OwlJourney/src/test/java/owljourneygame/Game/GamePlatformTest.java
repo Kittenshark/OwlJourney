@@ -58,7 +58,8 @@ public class GamePlatformTest {
     
     @Test
     public void movingOwlMovesOwl(){
-        game.moveOwl(0);
+        game.whereToMove(MoveSide.R);
+        game.moveOwl();
         
         assertEquals(game.getOwl().getX(), 40);
         assertEquals(game.getOwl().getY(), 240);
@@ -73,8 +74,9 @@ public class GamePlatformTest {
     }
     
     public void moveOwl(){
+        game.whereToMove(MoveSide.R);
         for (int i=0; i<5; i++){
-            game.moveOwl(0);
+            game.moveOwl();
         }
     }
     
@@ -121,10 +123,12 @@ public class GamePlatformTest {
         // 20, 280, 360, 20
     }
     
+    
     @Test
     public void owlNotMoveOverWalls(){
-        game.moveOwl(1);
-        game.moveOwl(1);
+        game.whereToMove(MoveSide.L);
+        game.moveOwl();
+        game.moveOwl();
         
         assertEquals(20, game.getOwl().getX());
         assertEquals(240, game.getOwl().getY());
@@ -134,10 +138,9 @@ public class GamePlatformTest {
     public void hittingMineWorks(){
         Owl owlie = new Owl(50, 50, 10);
         Mine mine = new Mine(60, 60);
-        owlie.moveOwl(0);
-        
-        
+        owlie.moveOwl(0);  
     }
+    
  
     
 

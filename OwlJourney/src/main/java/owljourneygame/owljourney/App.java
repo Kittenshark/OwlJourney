@@ -16,6 +16,6 @@ public class App {
         
         SwingUtilities.invokeLater(face);
         
-        game.runGame();
+
     }
 }

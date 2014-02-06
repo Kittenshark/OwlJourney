@@ -5,14 +5,17 @@ package ActionListeners;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import owljourneygame.Game.GamePlatform;
+import owljourneygame.Game.MoveSide;
 import owljourneygame.parts.Owl;
 
 
 public class ListenKeys implements KeyListener{
     GamePlatform game;
+    Owl owl;
     
     public ListenKeys(GamePlatform game){
         this.game = game;
+        //this.owl = owl;
     }
 
     @Override
@@ -22,21 +25,25 @@ public class ListenKeys implements KeyListener{
     @Override
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_RIGHT){
-            game.moveOwl(0);
+            game.whereToMove(MoveSide.R);
+            //game.moveOwl(0);
         }
         if (e.getKeyCode() == KeyEvent.VK_LEFT){
-            game.moveOwl(1);
+            game.whereToMove(MoveSide.L);
+            //game.moveOwl(1);
         }
         
         if (e.getKeyCode() == KeyEvent.VK_DOWN){
-            game.moveOwl(2);
+            game.whereToMove(MoveSide.D);
+            //game.moveOwl(2);
         }
         
         if (e.getKeyCode() == KeyEvent.VK_UP){
-            game.moveOwl(3);
+            game.whereToMove(MoveSide.U);
+            //game.moveOwl(3);
         }
         
-        //oikea 0, vasen 1, alas 2, ylös 3, kein enum
+        //oikea 0, vasen 1, alas 2, ylös 3
     }
 
     @Override

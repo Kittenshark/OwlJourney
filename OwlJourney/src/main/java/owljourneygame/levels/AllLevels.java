@@ -44,6 +44,12 @@ public class AllLevels {
         walls.add(wall);
     }
     
+    public void addWalls(ArrayList<Wall> manyWalls){
+        for (Wall w : manyWalls){
+            walls.add(w);
+        }
+    }
+    
     public void addMine(Mine mine){
         mines.add(mine);
     }

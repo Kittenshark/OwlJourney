@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import owljourneygame.gui.UpdateGame;
 import owljourneygame.levels.AllLevels;
+import owljourneygame.levels.HoldLevel;
 import owljourneygame.parts.Dot;
 import owljourneygame.parts.FinishLine;
 import owljourneygame.parts.Mine;
@@ -19,19 +20,16 @@ public class GamePlatform implements ActionListener{
     private Owl owl;
     private int lifepoints;
     private UpdateGame update;
+    private MoveSide where;
+    private HoldLevel createL;
     
     public GamePlatform(){
+        createL = new HoldLevel();
         lifepoints = 3;
-        whichLevel = 0;
+        whichLevel = 1;
         levels = new ArrayList<AllLevels>();
-       // level = new GiefLevel();
         createOwl();
         createLevels();
-        //runGame();
-    }
-    
-    public void runGame(){
-        //turha? ...
     }
     
     public void createOwl(){
@@ -42,10 +40,20 @@ public class GamePlatform implements ActionListener{
         return owl;
     }
    
+    /**
+     * Creates the levels of the game.
+     * 
+     **/
     public void createLevels(){
         //ei tule ongelmia, jos samaa luokkaa 
+        //level 0
         levels.add(new AllLevels(new FinishLine(350, 30)));
-        levels.add(new AllLevels(new FinishLine(180, 40)));
+        
+        //level 1
+        levels.add(new AllLevels(new FinishLine(210, 40))); 
+        ArrayList<Wall> oneW = createL.getLevelOneWalls(); 
+        //oneW = createL.getLevelOneWalls();
+        levels.get(1).addWalls(oneW);
     }
     
     public AllLevels getLevel(){
@@ -60,16 +68,11 @@ public class GamePlatform implements ActionListener{
         return whichLevel;
     }
     
-    public boolean hitWall(){
-        
-        for (Wall wall : levels.get(whichLevel).getWalls()){
-            if (wall.getX() == owl.getX() && wall.getY() == owl.getY()){
-                return true;    //Jos osutaan seinään, ei liikuta sen lävitse
-            }
-        }
-        return false;   
-    }
-    
+    /**
+     * Checks if the owl hits a mine.
+     * 
+     * @return Whether owl hit the mine or not
+     */
     public boolean hitMine(){
         Rectangle o = owl.getBounds();
         for (Mine mine : getLevel().getMines()){
@@ -85,25 +88,39 @@ public class GamePlatform implements ActionListener{
         return false;
     }
     
-    public void moveOwl(int side){
+    /**
+     * Moves owl to left, right, up or down.
+     * Checks first whether Owl will hit wall or not.
+     */
+    public void moveOwl(){
         if (!wallCollision()){ //kein
-            owl.moveOwl(side);  
+            owl.moveOwl(where.getWhere());  
         }
-        
-        /*
-        action listeners sun muuta
-        left, right, up, down, miinus/plus etc
-        1 liikkuminen liikkuu pöllön koko koon verran
-                */
+        System.out.println("x = "+owl.getX()+" | y = "+owl.getY());
     }
-    
+    /**
+    * Method check if owl hits a wall.
+    * If Owl hits the wall, it wont move across it.
+    * @return does owl hit wall or not
+    **/
     public boolean wallCollision(){
-        Rectangle o = owl.getBounds();
-        //hm
+        int wherex = 0;
+        int wherey = 0;
+        if (where.getWhere() == 0){
+            wherex = 10;
+        } else if (where.getWhere() == 1){
+            wherex = -10;
+        } else if (where.getWhere() == 2){
+            wherey = 10;
+        } else {
+            wherey = -10;
+        }
+
         for (Wall wall : getLevel().getWalls()){
-            Rectangle w = wall.getBounds();
-            System.out.println(w.intersection(w));
-            if (w.intersects(o)){ //kein work yet, jos menee kokonaan sisään
+            int rx = wall.getX()+wall.getWidth(); //upper right coordinates
+            int ry = wall.getY()+wall.getHeight(); //bottom left coordinates
+
+            if (wall.getX() <= owl.getX()+wherex && owl.getX()+wherex <= rx && wall.getY() >= owl.getY()+wherey && owl.getY()+wherey >= ry){
                 return true;
             }
         }
@@ -111,21 +128,24 @@ public class GamePlatform implements ActionListener{
         return false;
     }
     
-    //tbd later
+    public void whereToMove(MoveSide where){
+        this.where = where;
+    }
+    
+    //tbd later, kein listen
     @Override
     public void actionPerformed(ActionEvent e) {
+        moveOwl();
+        
         if (hitMine()){
             takeLives();
-        }
-        if (hitWall()){
-            
-        }
+        }   
+        
         if (hitGoal()){
             goNextLevel();
         }
         
         update.update();
-        //collision
     }
 
     

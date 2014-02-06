@@ -20,16 +20,16 @@ public class Owl{
     
     public int getSide(){
         return side;
-    }
+    }  
     
-    public void moveOwl(int side){
-        if (side == 0){ //oikea, kein enum
+    public void moveOwl(int where) {
+        if (where == 0){
             x += 10;
-        } else if(side == 1){ //vasen
+        } else if(where == 1){ //vasen
             x -= 10;
-        }else if (side == 2){ //alas
+        }else if (where == 2){ //alas
             y += 10;
-        } else if (side == 3) { //ylös
+        } else if (where == 3) { //ylös
             y -= 10;
         }
         /*pöllö liikkuu pelikentällä uusiin koordinaatteihin
@@ -37,6 +37,11 @@ public class Owl{
             Action listener tarvitaan.
             todennäköisesti x ja y montako askelta mihinkin suuntaan
         */
+    }
+    
+    public void setOwl(int x, int y){
+        this.x = x;
+        this.y = y;
     }
     
     public int getX(){
@@ -50,5 +55,6 @@ public class Owl{
     public Rectangle getBounds(){
         return new Rectangle(x, y, side, side);
     }
+    
     
 }

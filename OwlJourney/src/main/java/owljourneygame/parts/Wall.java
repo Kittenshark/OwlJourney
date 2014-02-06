@@ -34,8 +34,11 @@ public class Wall extends Dot{
         g.fillRect(x, y, width, height);
     }
     */
-    
-    
+
+    /**
+     *
+     * @return
+     */
     public Rectangle getBounds(){
         return new Rectangle(x, y, width, height);
     }

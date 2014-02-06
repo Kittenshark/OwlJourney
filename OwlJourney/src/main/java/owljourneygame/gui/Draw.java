@@ -60,4 +60,5 @@ public class Draw extends JPanel implements UpdateGame{
     public void update() {
         repaint();
     }
+
 }
