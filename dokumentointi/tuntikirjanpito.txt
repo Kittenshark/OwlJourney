@@ -9,3 +9,4 @@
 27.1	75min
 28.1	80min tuloksetonta koodausta
 29.1	60min muutoksia luokkiin, testeihin
+13.2	120min	sekvenssikaavioita, testeja
