@@ -17,6 +17,7 @@ import owljourneygame.parts.Wall;
 
 public class GamePlatformTest {
     GamePlatform game;
+    ArrayList<Wall> setUpWalls1;
     
     public GamePlatformTest() {
     }
@@ -32,6 +33,7 @@ public class GamePlatformTest {
     @Before
     public void setUp() {
         game = new GamePlatform();
+        setUpWalls1 = new ArrayList<Wall>();
     }
     
     @After
@@ -139,6 +141,35 @@ public class GamePlatformTest {
         Owl owlie = new Owl(50, 50, 10);
         Mine mine = new Mine(60, 60);
         owlie.moveOwl(0);  
+    }
+    
+    @Test
+    public void afterFirstLevel0YouGetSecondLevel1(){
+        game.goNextLevel();
+        assertEquals(game.getWhichLevel(), 1);
+        
+        for (int i=0; i<setUpWalls1.size(); i++){
+            assertTrue(setUpWalls1.get(i).equals(game.getLevel().getWalls().get(i)));
+        }
+    }
+    
+    public void reCreateLevelOneWalls(){
+        setUpWalls1.add(new Wall(0, 0, 360, 20));
+        setUpWalls1.add(new Wall(360, 0, 20, 280));
+        setUpWalls1.add(new Wall(0, 20, 20, 280));
+        setUpWalls1.add(new Wall(20, 280, 360, 20));
+        
+        setUpWalls1.add(new Wall(10, 10, 80, 280));
+        setUpWalls1.add(new Wall(280, 10, 80, 280));
+        
+        setUpWalls1.add(new Wall(90, 240, 70, 50));
+        setUpWalls1.add(new Wall(190, 240, 90, 50));
+        
+        setUpWalls1.add(new Wall(90, 10, 110, 50));
+        setUpWalls1.add(new Wall(230, 10, 90, 50));
+        
+        setUpWalls1.add(new Wall(110, 100, 50, 100));
+        setUpWalls1.add(new Wall(180, 100, 50, 100));
     }
     
  

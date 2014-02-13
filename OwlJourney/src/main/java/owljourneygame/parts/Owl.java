@@ -6,13 +6,20 @@ import java.awt.Rectangle;
 import java.util.ArrayList;
 
 public class Owl{
+    /**
+     * Determines size of the Owl
+     */
     private int side;
+    /**
+     * Owl X-axis coordinates
+     */
     private int x;
+    /**
+     * Owl Y-axis coordinates
+     */
     private int y;
     
     public Owl(int x, int y, int side){
-        //Pöllön aloituskoordinaatit ja sivun pituus
-        //super(x, y); //aloituspiste
         this.side = side;
         this.x = x;
         this.y = y;
@@ -22,6 +29,10 @@ public class Owl{
         return side;
     }  
     
+    /**
+     * Moves owl to wanted direction
+     * @param where direction where owl will move
+     */
     public void moveOwl(int where) {
         if (where == 0){
             x += 10;
@@ -39,6 +50,12 @@ public class Owl{
         */
     }
     
+    /**
+     * Sets owl in a new position
+     * Makes it possible to move owl to wanted direction without taking moving steps
+     * @param x X-axis location
+     * @param y Y-axis location
+     */
     public void setOwl(int x, int y){
         this.x = x;
         this.y = y;

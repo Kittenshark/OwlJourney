@@ -6,7 +6,13 @@ import java.awt.Rectangle;
 
 
 public class Wall extends Dot{
+    /**
+     * Width of the wall
+     */
     private int width;
+    /**
+     * Height of the wall
+     */
     private int height;
 
     public Wall(int x, int y, int width, int height) {
@@ -23,6 +29,11 @@ public class Wall extends Dot{
         return height;
     }
     
+    /**
+     * Sees whether two walls are equal or not
+     * @param wall
+     * @return boolean are walls equal or not
+     */
     public boolean equals(Wall wall){
         if (wall.getX() == x && wall.getY() == y && wall.width == width && wall.height == height){
             return true;

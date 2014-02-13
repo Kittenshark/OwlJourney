@@ -50,4 +50,11 @@ public class WallTest {
         assertEquals(wall.getHeight(), 25);
     }
     
+    @Test
+    public void differentWallsDoNotEqual(){
+        Wall first = new Wall(10, 10, 20, 20);
+        Wall second = new Wall(10, 10, 30, 40);
+        
+        assertFalse(first.equals(second));
+    }
 }

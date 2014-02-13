@@ -3,7 +3,13 @@
 package owljourneygame.parts;
 
 public class FinishLine {
+    /**
+     * Coordinate of X-axis
+     */
     private int x;
+    /**
+     * Coordinate of Y-axis
+     */
     private int y;
     
     public FinishLine(int x, int y){

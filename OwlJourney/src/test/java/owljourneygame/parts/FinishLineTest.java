@@ -17,11 +17,10 @@ import static org.junit.Assert.*;
  *
  * @author Emmi
  */
-public class MineTest {
+public class FinishLineTest {
+    FinishLine win;
     
-    Mine mine;
-    
-    public MineTest() {
+    public FinishLineTest() {
     }
     
     @BeforeClass
@@ -34,28 +33,15 @@ public class MineTest {
     
     @Before
     public void setUp() {
-        mine = new Mine(20, 35);
+        win = new FinishLine(50, 50);
     }
     
     @After
     public void tearDown() {
     }
-    
+
     @Test
-    public void minePositionIsRight(){
-        assertEquals(mine.getX(), 20); 
-        assertEquals(mine.getY(), 35);
-    }
-    
-    @Test
-    public void minePositionIsRight2(){
-        assertEquals(mine.getX(), mine.x);
-        assertEquals(mine.getY(), mine.y);
-    }
-    
-    @Test
-    public void mineHasRightSize(){
-        mine.setSide(10);
-        assertEquals(mine.side, 10);
+    public void FinishLineHasRightSize(){
+        assertEquals(win.getSide(), 10);
     }
 }
