@@ -25,7 +25,7 @@ public class GamePlatform implements ActionListener {
     public GamePlatform(){
         createL = new HoldLevel();
         lifepoints = 3;
-        whichLevel = 0; //vaihda 0 
+        whichLevel = 1; //vaihda 0 
         levels = new ArrayList<AllLevels>();
         createOwl();
         createLevels();

@@ -11,6 +11,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import owljourneygame.Game.GamePlatform;
 import owljourneygame.parts.FinishLine;
+import owljourneygame.parts.Mine;
 import owljourneygame.parts.Wall;
 
 
@@ -36,6 +37,8 @@ public class Draw extends JPanel implements UpdateGame{
         //graphics.setColor(Color.red);
         //graphics.fillRect(goal.getX(), goal.getY(), goal.getSide(), goal.getSide());
           
+        drawMines(graphics);
+        
         Color wallGreen = new Color(6, 51, 7);
         graphics.setColor(wallGreen);
         
@@ -61,6 +64,19 @@ public class Draw extends JPanel implements UpdateGame{
             System.out.println("No image found");
         }
         graphics.drawImage(goal, game.getLevel().getGoal().getX(), game.getLevel().getGoal().getY(), null);
+    }
+    
+    public void drawMines(Graphics graphics){
+        BufferedImage mine = null;
+        try {
+            mine = ImageIO.read(new File("C:\\Users\\Emmi\\OwlJourney\\OwlJourney\\src\\main\\java\\owljourneygame\\pictures\\MineP.gif"));
+        } catch(Exception e){
+            System.out.println("No image found");
+        }
+        
+        for (Mine m : game.getLevel().getMines()){
+            graphics.drawImage(mine, m.getX(), m.getY(), null);
+        }
     }
 
     
