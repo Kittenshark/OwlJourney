@@ -18,7 +18,7 @@ public class HoldLevel {
     }
     
     /**
-     * Creates all the walls for the first level
+     * Creates all the walls for the level one
      */
     private void createLevelOneWalls(){
         oneWall.add(new Wall(10, 10, 80, 280));
@@ -42,7 +42,9 @@ public class HoldLevel {
      * Creates all the mines for level one 
      */
     private void createLevelOneMines(){
-        
+        oneMine.add(new Mine(160, 150));
+        oneMine.add(new Mine(160, 160));
+        oneMine.add(new Mine(165, 150));
     }
     
     public ArrayList<Mine> getOneMines(){

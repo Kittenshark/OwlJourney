@@ -50,20 +50,20 @@ public class Mine {
     
     /**
      * Sets mine active
-     * @return true mine is active
      */
-    public boolean isActive(){
+    public void setActive(){
         active = true;
-        return true;
     }
     
     /**
      * Sets mine inactive
-     * @return false mine is not active
      */
-    public boolean inActive(){
+    public void setInActive(){
         active = false;
-        return false;
+    }
+    
+    public boolean getActive(){
+        return active;
     }
     
     public Rectangle getBounds(){

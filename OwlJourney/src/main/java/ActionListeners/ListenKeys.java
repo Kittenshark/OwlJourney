@@ -10,12 +10,12 @@ import owljourneygame.parts.Owl;
 
 
 public class ListenKeys implements KeyListener{
-    GamePlatform game;
+    //GamePlatform game;
     Owl owl;
     
-    public ListenKeys(GamePlatform game){
-        this.game = game;
-        //this.owl = owl;
+    public ListenKeys(Owl owl){
+        //this.game = game;
+        this.owl = owl;
     }
 
     @Override
@@ -25,21 +25,22 @@ public class ListenKeys implements KeyListener{
     @Override
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_RIGHT){
-            game.whereToMove(MoveSide.R);
+            owl.setOwlDirection(MoveSide.R);
+            //game.whereToMove(MoveSide.R);
             //game.moveOwl(0);
         }
         if (e.getKeyCode() == KeyEvent.VK_LEFT){
-            game.whereToMove(MoveSide.L);
+            owl.setOwlDirection(MoveSide.L);
             //game.moveOwl(1);
         }
         
         if (e.getKeyCode() == KeyEvent.VK_DOWN){
-            game.whereToMove(MoveSide.D);
+            owl.setOwlDirection(MoveSide.D);
             //game.moveOwl(2);
         }
         
         if (e.getKeyCode() == KeyEvent.VK_UP){
-            game.whereToMove(MoveSide.U);
+            owl.setOwlDirection(MoveSide.U);
             //game.moveOwl(3);
         }
         

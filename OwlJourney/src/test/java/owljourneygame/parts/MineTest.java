@@ -58,4 +58,9 @@ public class MineTest {
         mine.setSide(10);
         assertEquals(mine.side, 10);
     }
+    
+    @Test
+    public void mineIsTrueWhenCreated(){
+        
+    }
 }

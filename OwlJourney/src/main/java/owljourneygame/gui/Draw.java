@@ -3,11 +3,11 @@ package owljourneygame.gui;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
+import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 import owljourneygame.Game.GamePlatform;
-import owljourneygame.levels.LevelZero;
-import owljourneygame.levels.Printable;
 import owljourneygame.parts.FinishLine;
 import owljourneygame.parts.Wall;
 
@@ -25,9 +25,8 @@ public class Draw extends JPanel implements UpdateGame{
     protected void paintComponent(Graphics graphics){
         super.paintComponent(graphics);
         
-        
         graphics.setColor(Color.ORANGE);
-        graphics.fillRect(game.getOwl().getX(), game.getOwl().getY(), game.getOwl().getSide(), game.getOwl().getSide());
+        graphics.fillRect(game.getOwl().getX(), game.getOwl().getY(), game.getOwl().getSize(), game.getOwl().getSize());
         
         FinishLine goal = game.getLevel().getGoal();
         graphics.setColor(Color.red);
@@ -48,12 +47,6 @@ public class Draw extends JPanel implements UpdateGame{
         for (Wall wall : walls){
             graphics.fillRect(wall.getX(), wall.getY(), wall.getWidth(), wall.getHeight());
         }
-        /*loop listan läpikäyntiin, levelin seinien tulostus
-        graphics.fillRect(0, 0, 360, 20);
-        graphics.fillRect(20, 280, 360, 20);
-        graphics.fillRect(0, 20, 20, 280);
-        graphics.fillRect(360, 0, 20, 280);    
-                */
     }
 
     @Override

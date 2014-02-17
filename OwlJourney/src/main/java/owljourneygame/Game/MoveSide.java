@@ -18,5 +18,5 @@ public enum MoveSide {
     public int getWhere(){
         return where;
     }
-            
+          
 }

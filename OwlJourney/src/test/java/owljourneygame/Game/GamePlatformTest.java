@@ -49,7 +49,7 @@ public class GamePlatformTest {
     
     @Test
     public void owlIsRightSize(){
-        assertEquals(game.getOwl().getSide(), 10);
+        assertEquals(game.getOwl().getSize(), 10);
     }
     
     
@@ -170,6 +170,12 @@ public class GamePlatformTest {
         
         setUpWalls1.add(new Wall(110, 100, 50, 100));
         setUpWalls1.add(new Wall(180, 100, 50, 100));
+    }
+    
+    public void decreasingLifePointsWorks(){
+        game.takeLives();
+        
+        assertEquals(game.getLifePoints(), 2);
     }
     
  

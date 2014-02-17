@@ -41,7 +41,7 @@ public class OwlTest {
     
     @Test
     public void owlSizeisRight(){
-        assertEquals(owl.getSide(), 10);
+        assertEquals(owl.getSize(), 10);
     }
     
     @Test

@@ -15,7 +15,7 @@ public class App {
         UserInterface face = new UserInterface(game);
         
         SwingUtilities.invokeLater(face);
-        
+        //game.setUpdate(face.getUpdate());
 
     }
 }

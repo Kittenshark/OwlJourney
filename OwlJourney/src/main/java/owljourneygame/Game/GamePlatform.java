@@ -14,19 +14,18 @@ import owljourneygame.parts.Mine;
 import owljourneygame.parts.Owl;
 import owljourneygame.parts.Wall;
 
-public class GamePlatform implements ActionListener{
+public class GamePlatform implements ActionListener {
     private ArrayList<AllLevels> levels;
     private int whichLevel;
     private Owl owl;
     private int lifepoints;
     private UpdateGame update;
-    private MoveSide where;
     private HoldLevel createL;
     
     public GamePlatform(){
         createL = new HoldLevel();
         lifepoints = 3;
-        whichLevel = 0; //vaihda 0 
+        whichLevel = 1; //vaihda 0 
         levels = new ArrayList<AllLevels>();
         createOwl();
         createLevels();
@@ -35,25 +34,24 @@ public class GamePlatform implements ActionListener{
     public void createOwl(){
         owl = new Owl(30, 240, 10); //ensimmäisen levelin aloituspiste, vaihtuu per level 
     }
-    
-    public Owl getOwl(){
-        return owl;
-    }
    
     /**
      * Creates the levels of the game.
      * 
      **/
     public void createLevels(){
-        //ei tule ongelmia, jos samaa luokkaa 
         //level 0
         levels.add(new AllLevels(new FinishLine(350, 30)));
         
         //level 1
         levels.add(new AllLevels(new FinishLine(210, 40))); 
         ArrayList<Wall> oneW = createL.getLevelOneWalls(); 
-        //oneW = createL.getLevelOneWalls();
         levels.get(1).addWalls(oneW);
+        levels.get(1).addMines(createL.getOneMines());
+    }
+    
+    public Owl getOwl(){
+        return owl;
     }
     
     public AllLevels getLevel(){
@@ -67,7 +65,22 @@ public class GamePlatform implements ActionListener{
     public int getWhichLevel(){
         return whichLevel;
     }
+       
+    public int getLifePoints(){
+        return lifepoints;
+    }
     
+    public void setUpdate(UpdateGame update){
+        this.update = update;
+    }
+    
+    public void takeLives(){
+        lifepoints--;
+    }
+    
+    public void goNextLevel(){
+        whichLevel++;
+    }
     /**
      * Checks if the owl hits a mine.
      * 
@@ -85,6 +98,11 @@ public class GamePlatform implements ActionListener{
     }
     
     public boolean hitGoal(){
+        if (true){
+            if (getWhichLevel() == 1){
+                owl.setOwl(185, 270);
+            }
+        }
         return false;
     }
     
@@ -93,11 +111,12 @@ public class GamePlatform implements ActionListener{
      * Checks first whether Owl will hit wall or not.
      */
     public void moveOwl(){
-        if (!wallCollision()){ //kein
-            owl.moveOwl(where.getWhere());  
-        }
+        //if (!wallCollision()){ //kein
+            owl.moveOwl();  
+        //}
         System.out.println("x = "+owl.getX()+" | y = "+owl.getY());
     }
+    
     /**
     * Method check if owl hits a wall.
     * If Owl hits the wall, it wont move across it.
@@ -106,13 +125,13 @@ public class GamePlatform implements ActionListener{
     public boolean wallCollision(){
         int wherex = 0;
         int wherey = 0;
-        if (where.getWhere() == 0){
+        if (owl.getMoveDirection().getWhere() == 0){
             wherex = 10;
-        } else if (where.getWhere() == 1){
+        } else if (owl.getMoveDirection().getWhere() == 1){
             wherex = -10;
-        } else if (where.getWhere() == 2){
+        } else if (owl.getMoveDirection().getWhere() == 2){
             wherey = 10;
-        } else {
+        } else if (owl.getMoveDirection().getWhere() == 3){
             wherey = -10;
         }
 
@@ -128,13 +147,10 @@ public class GamePlatform implements ActionListener{
         return false;
     }
     
-    public void whereToMove(MoveSide where){
-        this.where = where;
-    }
-    
-    //tbd later, kein listen
+    //kein listen, ei lue tänne
     @Override
     public void actionPerformed(ActionEvent e) {
+        System.out.println("HELLO");
         moveOwl();
         
         if (hitMine()){
@@ -146,16 +162,5 @@ public class GamePlatform implements ActionListener{
         }
         
         update.update();
-    }
-
-    
-    public void takeLives(){
-        lifepoints--;
-    }
-    
-    public void goNextLevel(){
-        whichLevel++;
-    }
-
-            
+    }        
 }

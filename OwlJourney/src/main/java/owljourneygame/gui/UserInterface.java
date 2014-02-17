@@ -43,13 +43,17 @@ public class UserInterface implements Runnable{
          draw = new Draw(game);
          container.add(draw);
          
-         ListenKeys listen = new ListenKeys(game);
-         frame.addKeyListener(listen);
+         ListenKeys listenKeys = new ListenKeys(game.getOwl());
+         frame.addKeyListener(listenKeys);
     }
  
  
     public JFrame getFrame() {
         return frame;
+    }
+    
+    public UpdateGame getUpdate(){
+        return draw;
     }
     
     
