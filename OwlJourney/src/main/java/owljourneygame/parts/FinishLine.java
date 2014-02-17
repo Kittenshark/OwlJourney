@@ -2,6 +2,8 @@
 
 package owljourneygame.parts;
 
+import java.awt.Rectangle;
+
 public class FinishLine {
     /**
      * Coordinate of X-axis
@@ -28,5 +30,9 @@ public class FinishLine {
     public int getSide(){
         return 10;
         //goal, mine, owl sivun pituus 10
+    }
+    
+    public Rectangle getBounds(){
+        return new Rectangle(x, y, 10, 10);
     }
 }

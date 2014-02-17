@@ -25,7 +25,7 @@ public class GamePlatform implements ActionListener {
     public GamePlatform(){
         createL = new HoldLevel();
         lifepoints = 3;
-        whichLevel = 1; //vaihda 0 
+        whichLevel = 0; //vaihda 0 
         levels = new ArrayList<AllLevels>();
         createOwl();
         createLevels();
@@ -98,10 +98,12 @@ public class GamePlatform implements ActionListener {
     }
     
     public boolean hitGoal(){
-        if (true){
-            if (getWhichLevel() == 1){
+        Rectangle o = owl.getBounds();
+        Rectangle f = levels.get(whichLevel).getGoal().getBounds();
+        if (o.intersects(f)){
                 owl.setOwl(185, 270);
-            }
+                return  true;
+
         }
         return false;
     }
@@ -111,9 +113,9 @@ public class GamePlatform implements ActionListener {
      * Checks first whether Owl will hit wall or not.
      */
     public void moveOwl(){
-        //if (!wallCollision()){ //kein
+        if (!wallCollision()){ //kein
             owl.moveOwl();  
-        //}
+        }
         System.out.println("x = "+owl.getX()+" | y = "+owl.getY());
     }
     

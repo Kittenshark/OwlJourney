@@ -41,11 +41,6 @@ public class Owl{
         } else if (move.getWhere() == 3) { //ylös
             y -= 10;
         }
-        /*pöllö liikkuu pelikentällä uusiin koordinaatteihin
-            vielä ei varmaa, kuinka liikkuminen tapahtuu.
-            Action listener tarvitaan.
-            todennäköisesti x ja y montako askelta mihinkin suuntaan
-        */
     }
     
     /**
