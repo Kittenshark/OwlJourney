@@ -9,4 +9,5 @@
 27.1	75min
 28.1	80min tuloksetonta koodausta
 29.1	60min muutoksia luokkiin, testeihin
-13.2	120min	sekvenssikaavioita, testeja
+13.2	140min sekvenssikaavioita, testeja
+17.2	120min actionlistener toimii, mutta actionperformed ei reagoi mihinkaan. Kuvia kayttoliittymaa varten

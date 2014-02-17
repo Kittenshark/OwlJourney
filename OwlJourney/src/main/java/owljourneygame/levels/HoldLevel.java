@@ -9,12 +9,17 @@ import owljourneygame.parts.Wall;
 
 public class HoldLevel {
     ArrayList<Wall> oneWall;
-    ArrayList<Mine> oneMine = new ArrayList<Mine>();
+    ArrayList<Mine> oneMine;
+    ArrayList<Wall> twoWall;
+    
     
     public HoldLevel(){      
         oneWall = new ArrayList<Wall>();
+        oneMine = new ArrayList<Mine>();
+        twoWall = new ArrayList<Wall>();
         createLevelOneWalls();
         createLevelOneMines();
+        createLevelTwoWalls();
     }
     
     /**
@@ -49,5 +54,9 @@ public class HoldLevel {
     
     public ArrayList<Mine> getOneMines(){
         return oneMine;
+    }
+    
+    public void createLevelTwoWalls(){
+        
     }
 }

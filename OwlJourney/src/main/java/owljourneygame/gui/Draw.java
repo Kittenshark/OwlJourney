@@ -44,6 +44,9 @@ public class Draw extends JPanel implements UpdateGame{
         
         drawWalls(graphics);
         
+        drawHealthBar(graphics);
+        this.drawHealthMouse(graphics);
+        
     }
     public void drawOwl(Graphics graphics){
         BufferedImage owlie = null;
@@ -52,7 +55,7 @@ public class Draw extends JPanel implements UpdateGame{
         } catch(Exception e) {
             System.out.println("No image found");
         }
-        graphics.drawImage(owlie, game.getOwl().getX(), game.getOwl().getY(), null);
+        graphics.drawImage(owlie, game.getOwl().getX()-2, game.getOwl().getY()-2, null);
         //ImageIcon owl = createImageIcon("");
     }
     
@@ -63,7 +66,7 @@ public class Draw extends JPanel implements UpdateGame{
         } catch(Exception e){
             System.out.println("No image found");
         }
-        graphics.drawImage(goal, game.getLevel().getGoal().getX(), game.getLevel().getGoal().getY(), null);
+        graphics.drawImage(goal, game.getLevel().getGoal().getX()-3, game.getLevel().getGoal().getY()-3, null);
     }
     
     public void drawMines(Graphics graphics){
@@ -75,7 +78,9 @@ public class Draw extends JPanel implements UpdateGame{
         }
         
         for (Mine m : game.getLevel().getMines()){
-            graphics.drawImage(mine, m.getX(), m.getY(), null);
+            if (m.getActive()){
+              graphics.drawImage(mine, m.getX(), m.getY(), null);  
+            } 
         }
     }
 
@@ -87,6 +92,36 @@ public class Draw extends JPanel implements UpdateGame{
         
         for (Wall wall : walls){
             graphics.fillRect(wall.getX(), wall.getY(), wall.getWidth(), wall.getHeight());
+        }
+    }
+    
+    public void drawHealthBar(Graphics graphics){
+        BufferedImage bar = null;
+        try {
+            bar = ImageIO.read(new File("C:\\Users\\Emmi\\OwlJourney\\OwlJourney\\src\\main\\java\\owljourneygame\\pictures\\LifeBar2.gif"));
+        } catch(Exception e){
+            System.out.println("No image found");
+        }
+        
+        graphics.drawImage(bar,20,0, null);
+    }
+    
+    public void drawHealthMouse(Graphics graphics){
+        BufferedImage mouse = null;
+        try {
+            mouse = ImageIO.read(new File("C:\\Users\\Emmi\\OwlJourney\\OwlJourney\\src\\main\\java\\owljourneygame\\pictures\\MouseLife.gif"));
+        } catch(Exception e){
+            System.out.println("No image found");
+        }
+        
+        if (game.getLifePoints() > 0){
+            graphics.drawImage(mouse, 22, 2, this);
+        }
+        if (game.getLifePoints() > 1){
+            graphics.drawImage(mouse, 36, 2, this);
+        }
+        if (game.getLifePoints() == 3){
+            graphics.drawImage(mouse, 52, 2, this);
         }
     }
     

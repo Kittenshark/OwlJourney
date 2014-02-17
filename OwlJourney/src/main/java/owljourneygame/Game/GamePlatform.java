@@ -152,6 +152,9 @@ public class GamePlatform implements ActionListener {
     //kein listen, ei lue tänne
     @Override
     public void actionPerformed(ActionEvent e) {
+        if (lifepoints <= 0){
+            //game ends
+        }
         System.out.println("HELLO");
         moveOwl();
         
@@ -162,6 +165,7 @@ public class GamePlatform implements ActionListener {
         if (hitGoal()){
             goNextLevel();
         }
+        
         
         update.update();
     }        
