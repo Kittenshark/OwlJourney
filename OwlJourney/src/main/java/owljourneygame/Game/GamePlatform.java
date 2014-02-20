@@ -32,7 +32,7 @@ public class GamePlatform implements ActionListener {
     }
     
     public void createOwl(){
-        owl = new Owl(30, 240, 10); //ensimmäisen levelin aloituspiste, vaihtuu per level 
+        owl = new Owl(30, 240, 15); //ensimmäisen levelin aloituspiste, vaihtuu per level 
     }
    
     /**
@@ -125,23 +125,41 @@ public class GamePlatform implements ActionListener {
     * @return does owl hit wall or not
     **/
     public boolean wallCollision(){
-        int wherex = 0;
-        int wherey = 0;
+        int owlIsMovingX = 0;
+        int owlIsMovingY = 0;
         if (owl.getMoveDirection().getWhere() == 0){
-            wherex = 10;
+            owlIsMovingX = 10;
         } else if (owl.getMoveDirection().getWhere() == 1){
-            wherex = -10;
+            owlIsMovingX = -10;
         } else if (owl.getMoveDirection().getWhere() == 2){
-            wherey = 10;
+            owlIsMovingY = 10;
         } else if (owl.getMoveDirection().getWhere() == 3){
-            wherey = -10;
+            owlIsMovingY = -10;
         }
+        
+        int owlFutureX = owl.getX()+owlIsMovingX;
+        int owlFutureY = owl.getY()+owlIsMovingY;
 
         for (Wall wall : getLevel().getWalls()){
+            //x, y = left top
+            //x, ry = left bottom
+            //rx, y = right top
+            //rx, ry = right bottom
             int rx = wall.getX()+wall.getWidth(); //upper right coordinates
             int ry = wall.getY()+wall.getHeight(); //bottom left coordinates
+            
+            if (owlFutureX > wall.getX() && owlFutureY > wall.getY()){
+                //if 
+            }
+            if (owlFutureX > wall.getX() && owlFutureY < ry){
+                //
+            }
+            if (owlFutureX < rx && owlFutureY < ry){
+                
+            }
 
-            if (wall.getX() <= owl.getX()+wherex && owl.getX()+wherex <= rx && wall.getY() >= owl.getY()+wherey && owl.getY()+wherey >= ry){
+
+            if (wall.getX() <= owl.getX()+owlIsMovingX && owl.getX()+owlIsMovingX <= rx && wall.getY() >= owl.getY()+owlIsMovingY && owl.getY()+owlIsMovingY >= ry){
                 return true;
             }
         }

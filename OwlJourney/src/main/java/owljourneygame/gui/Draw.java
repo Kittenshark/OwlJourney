@@ -3,10 +3,12 @@ package owljourneygame.gui;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.ArrayList;
 import javax.imageio.ImageIO;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import owljourneygame.Game.GamePlatform;
@@ -51,7 +53,7 @@ public class Draw extends JPanel implements UpdateGame{
     public void drawOwl(Graphics graphics){
         BufferedImage owlie = null;
         try {
-           owlie = ImageIO.read(new File("C:\\Users\\Emmi\\OwlJourney\\OwlJourney\\src\\main\\java\\owljourneygame\\pictures\\Owlie2.gif"));  
+           owlie = ImageIO.read(new File("C:\\Users\\Emmi\\OwlJourney\\OwlJourney\\src\\main\\pictures\\Owlie2.gif"));  
         } catch(Exception e) {
             System.out.println("No image found");
         }
@@ -61,18 +63,24 @@ public class Draw extends JPanel implements UpdateGame{
     
     public void drawGoal(Graphics graphics){
         BufferedImage goal = null;
+        //String imagePath = "Owljourney/resources/GoalFlag2.gif";
+        BufferedImage picture = null;
+        
         try {
-            goal = ImageIO.read(new File("C:\\Users\\Emmi\\OwlJourney\\OwlJourney\\src\\main\\java\\owljourneygame\\pictures\\GoalFlag.gif"));
+            picture = ImageIO.read((getClass().getClassLoader().getResource("resources/GoalFlag2.gif")));
+            //goal = ImageIO.read(new File("pictures/GoalFlag.gif"));
+            //Icon picture = Draw.class.getResource("pictures/GoalFlag.gif");
+            //goal = ImageIO.read(new File("C:\\Users\\Emmi\\OwlJourney\\OwlJourney\\src\\main\\java\\owljourneygame\\pictures\\GoalFlag.gif"));
         } catch(Exception e){
             System.out.println("No image found");
         }
-        graphics.drawImage(goal, game.getLevel().getGoal().getX()-3, game.getLevel().getGoal().getY()-3, null);
+        graphics.drawImage(picture, game.getLevel().getGoal().getX()-3, game.getLevel().getGoal().getY()-3, null);
     }
     
     public void drawMines(Graphics graphics){
         BufferedImage mine = null;
         try {
-            mine = ImageIO.read(new File("C:\\Users\\Emmi\\OwlJourney\\OwlJourney\\src\\main\\java\\owljourneygame\\pictures\\MineP.gif"));
+            mine = ImageIO.read(new File("C:\\Users\\Emmi\\OwlJourney\\OwlJourney\\src\\main\\pictures\\MineP.gif"));
         } catch(Exception e){
             System.out.println("No image found");
         }
@@ -98,7 +106,7 @@ public class Draw extends JPanel implements UpdateGame{
     public void drawHealthBar(Graphics graphics){
         BufferedImage bar = null;
         try {
-            bar = ImageIO.read(new File("C:\\Users\\Emmi\\OwlJourney\\OwlJourney\\src\\main\\java\\owljourneygame\\pictures\\LifeBar2.gif"));
+            bar = ImageIO.read(new File("C:\\Users\\Emmi\\OwlJourney\\OwlJourney\\src\\main\\pictures\\LifeBar2.gif"));
         } catch(Exception e){
             System.out.println("No image found");
         }
@@ -109,7 +117,7 @@ public class Draw extends JPanel implements UpdateGame{
     public void drawHealthMouse(Graphics graphics){
         BufferedImage mouse = null;
         try {
-            mouse = ImageIO.read(new File("C:\\Users\\Emmi\\OwlJourney\\OwlJourney\\src\\main\\java\\owljourneygame\\pictures\\MouseLife.gif"));
+            mouse = ImageIO.read(new File("C:\\Users\\Emmi\\OwlJourney\\OwlJourney\\src\\main\\pictures\\MouseLife.gif"));
         } catch(Exception e){
             System.out.println("No image found");
         }
