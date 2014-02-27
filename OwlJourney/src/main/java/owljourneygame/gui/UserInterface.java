@@ -43,7 +43,7 @@ public class UserInterface implements Runnable{
          draw = new Draw(game);
          container.add(draw);
          
-         ListenKeys listenKeys = new ListenKeys(game.getOwl());
+         ListenKeys listenKeys = new ListenKeys(game);
          frame.addKeyListener(listenKeys);
     }
  
@@ -54,6 +54,14 @@ public class UserInterface implements Runnable{
     
     public UpdateGame getUpdate(){
         return draw;
+    }
+    
+    public Draw getDraw(){
+        return draw;
+    }
+    
+    public void letsPaint(){
+        frame.getContentPane().repaint();
     }
     
     

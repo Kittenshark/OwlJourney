@@ -56,7 +56,7 @@ public class MineTest {
     @Test
     public void mineHasRightSize(){
         mine.setSide(10);
-        assertEquals(mine.side, 10);
+        assertEquals(mine.size, 10);
     }
     
     @Test

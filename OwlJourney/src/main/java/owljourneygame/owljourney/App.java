@@ -4,6 +4,7 @@ package owljourneygame.owljourney;
 
 import javax.swing.SwingUtilities;
 import owljourneygame.Game.GamePlatform;
+import owljourneygame.gui.UpdateGame;
 import owljourneygame.gui.UserInterface;
 
 
@@ -15,7 +16,8 @@ public class App {
         UserInterface face = new UserInterface(game);
         
         SwingUtilities.invokeLater(face);
-        //game.setUpdate(face.getUpdate());
+        game.setDraw(face);
+
 
     }
 }

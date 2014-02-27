@@ -12,8 +12,12 @@ public class AllLevels {
     FinishLine goal;
     ArrayList<Mine> mines;
     ArrayList<Wall> walls;
+    private int owlieX;
+    private int owlieY;
     
-    public AllLevels(FinishLine goal){
+    public AllLevels(int owlieX, int owlieY, FinishLine goal){
+        this.owlieX = owlieX;
+        this.owlieY = owlieY;
         this.goal = goal;
         walls = new ArrayList<Wall>();
         mines = new ArrayList<Mine>();
@@ -40,6 +44,14 @@ public class AllLevels {
     
     public ArrayList<Wall> getWalls(){
         return walls;
+    }
+    
+    public int getOwlieStartX(){
+        return owlieX;
+    }
+    
+    public int getOwlieStartY(){
+        return owlieY;
     }
     
     /**

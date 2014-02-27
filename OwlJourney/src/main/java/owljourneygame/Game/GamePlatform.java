@@ -5,7 +5,9 @@ import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import owljourneygame.gui.Draw;
 import owljourneygame.gui.UpdateGame;
+import owljourneygame.gui.UserInterface;
 import owljourneygame.levels.AllLevels;
 import owljourneygame.levels.HoldLevel;
 import owljourneygame.parts.Dot;
@@ -14,18 +16,18 @@ import owljourneygame.parts.Mine;
 import owljourneygame.parts.Owl;
 import owljourneygame.parts.Wall;
 
-public class GamePlatform implements ActionListener {
+public class GamePlatform {
     private ArrayList<AllLevels> levels;
     private int whichLevel;
     private Owl owl;
     private int lifepoints;
-    private UpdateGame update;
     private HoldLevel createL;
+    private UserInterface draw;
     
     public GamePlatform(){
         createL = new HoldLevel();
         lifepoints = 3;
-        whichLevel = 1; //vaihda 0 
+        whichLevel = 0; //vaihda 0 
         levels = new ArrayList<AllLevels>();
         createOwl();
         createLevels();
@@ -41,13 +43,16 @@ public class GamePlatform implements ActionListener {
      **/
     public void createLevels(){
         //level 0
-        levels.add(new AllLevels(new FinishLine(350, 30)));
+        levels.add(new AllLevels(0, 0, new FinishLine(350, 30)));
         
         //level 1
-        levels.add(new AllLevels(new FinishLine(210, 40))); 
+        levels.add(new AllLevels(170, 265, new FinishLine(210, 40))); 
         ArrayList<Wall> oneW = createL.getLevelOneWalls(); 
         levels.get(1).addWalls(oneW);
         levels.get(1).addMines(createL.getOneMines());
+        
+        //level2
+        levels.add(new AllLevels(190, 150, new FinishLine(330, 40)));
     }
     
     public Owl getOwl(){
@@ -70,10 +75,6 @@ public class GamePlatform implements ActionListener {
         return lifepoints;
     }
     
-    public void setUpdate(UpdateGame update){
-        this.update = update;
-    }
-    
     public void takeLives(){
         lifepoints--;
     }
@@ -90,9 +91,14 @@ public class GamePlatform implements ActionListener {
         Rectangle o = owl.getBounds();
         for (Mine mine : getLevel().getMines()){
             Rectangle m = mine.getBounds();
-            if (o.intersects(m)){
-                return true;
+            if (mine.getActive() == true){
+                if (o.intersects(m) || m.contains(o)){
+                    mine.setInActive();
+                    System.out.println("osuttiin miinaan");
+                    return true;
+                } 
             }
+            
         }  
         return false;
     }
@@ -101,8 +107,8 @@ public class GamePlatform implements ActionListener {
         Rectangle o = owl.getBounds();
         Rectangle f = levels.get(whichLevel).getGoal().getBounds();
         if (o.intersects(f)){
-                owl.setOwl(185, 270);
-                return  true;
+            System.out.println("Osuttiin maaliin");
+                return true;
 
         }
         return false;
@@ -113,14 +119,14 @@ public class GamePlatform implements ActionListener {
      * Checks first whether Owl will hit wall or not.
      */
     public void moveOwl(){
-        if (!wallCollision()){ //kein
+        if (!wallCollision()){
             owl.moveOwl();  
         }
         System.out.println("x = "+owl.getX()+" | y = "+owl.getY());
     }
     
     /**
-    * Method check if owl hits a wall.
+    * Checks if owl hits any walls.
     * If Owl hits the wall, it wont move across it.
     * @return does owl hit wall or not
     **/
@@ -137,43 +143,27 @@ public class GamePlatform implements ActionListener {
             owlIsMovingY = -10;
         }
         
-        int owlFutureX = owl.getX()+owlIsMovingX;
-        int owlFutureY = owl.getY()+owlIsMovingY;
-
+        Rectangle o = new Rectangle(owl.getX()+owlIsMovingX, owl.getY()+owlIsMovingY, owl.getSize(), owl.getSize());
         for (Wall wall : getLevel().getWalls()){
-            //x, y = left top
-            //x, ry = left bottom
-            //rx, y = right top
-            //rx, ry = right bottom
-            int rx = wall.getX()+wall.getWidth(); //upper right coordinates
-            int ry = wall.getY()+wall.getHeight(); //bottom left coordinates
-            
-            if (owlFutureX > wall.getX() && owlFutureY > wall.getY()){
-                //if 
-            }
-            if (owlFutureX > wall.getX() && owlFutureY < ry){
-                //
-            }
-            if (owlFutureX < rx && owlFutureY < ry){
-                
-            }
-
-
-            if (wall.getX() <= owl.getX()+owlIsMovingX && owl.getX()+owlIsMovingX <= rx && wall.getY() >= owl.getY()+owlIsMovingY && owl.getY()+owlIsMovingY >= ry){
+            Rectangle w = wall.getBounds();
+            if (o.intersects(w) || w.contains(o)){
+                System.out.println("osuttiin seinään");
                 return true;
             }
         }
-        
         return false;
     }
     
-    //kein listen, ei lue tänne
-    @Override
-    public void actionPerformed(ActionEvent e) {
+    public void PlayGame() {
         if (lifepoints <= 0){
+            return;
             //game ends
         }
-        System.out.println("HELLO");
+        
+        if (whichLevel >= levels.size()){
+            return;
+            //out of levels
+        }
         moveOwl();
         
         if (hitMine()){
@@ -182,9 +172,13 @@ public class GamePlatform implements ActionListener {
         
         if (hitGoal()){
             goNextLevel();
+            owl.setOwl(levels.get(whichLevel).getOwlieStartX(), levels.get(whichLevel).getOwlieStartY());
         }
         
-        
-        update.update();
-    }        
+        draw.letsPaint();
+    }   
+    
+    public void setDraw(UserInterface face){
+        this.draw = face;
+    }
 }

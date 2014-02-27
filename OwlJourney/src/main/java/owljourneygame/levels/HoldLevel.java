@@ -47,9 +47,9 @@ public class HoldLevel {
      * Creates all the mines for level one 
      */
     private void createLevelOneMines(){
-        oneMine.add(new Mine(160, 150));
-        oneMine.add(new Mine(160, 160));
-        oneMine.add(new Mine(165, 150));
+        oneMine.add(new Mine(160, 150, true)); //false
+        oneMine.add(new Mine(160, 160, true)); //false
+        oneMine.add(new Mine(165, 150, true)); //false
     }
     
     public ArrayList<Mine> getOneMines(){

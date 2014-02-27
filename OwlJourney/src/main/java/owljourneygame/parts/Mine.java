@@ -14,11 +14,13 @@ public class Mine {
     /**
      * Determines the size of the of the mine
      */
-    protected int side;
+    protected int size;
     /**
      * Tells if the mine is active. If mine is active, it can hit and damage player
      */
     private boolean active;
+    
+    private boolean visible;
     
     /**
      * Sets mine values
@@ -26,9 +28,11 @@ public class Mine {
      * @param x X-axis location
      * @param y Y-axis location
      */
-    public Mine(int x, int y){
+    public Mine(int x, int y, boolean visible){
         this.x = x;
         this.y = y;
+        this.size = 10;
+        this.visible = visible;
         active = true;
     }
     
@@ -40,12 +44,20 @@ public class Mine {
         return y;
     }
     
-    public void setSide(int side){
-        this.side = side;
+    public int getSize(){
+        return size;
     }
     
-    public int getSide(){
-        return side;
+    public boolean getActive(){
+        return active;
+    }
+    
+    public boolean getVisible(){
+        return visible;
+    }
+    
+    public void setSize(int side){
+        this.size = side;
     }
     
     /**
@@ -56,18 +68,15 @@ public class Mine {
     }
     
     /**
-     * Sets mine inactive
+     * Sets mine inactive and invisible
      */
     public void setInActive(){
+        visible = false;
         active = false;
     }
     
-    public boolean getActive(){
-        return active;
-    }
-    
     public Rectangle getBounds(){
-        return new Rectangle(x, y, side, side);
+        return new Rectangle(x, y, size, size);
     }
 
     /*
