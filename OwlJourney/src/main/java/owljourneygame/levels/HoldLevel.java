@@ -1,4 +1,8 @@
-
+/**
+ * Keeps all levels
+ * Has information of all parts the game needs to create levels
+ * Includes all mines, walls
+ */
 
 package owljourneygame.levels;
 
@@ -8,18 +12,46 @@ import owljourneygame.parts.Wall;
 
 
 public class HoldLevel {
+    ArrayList<Mine> zeroMine;
     ArrayList<Wall> oneWall;
     ArrayList<Mine> oneMine;
     ArrayList<Wall> twoWall;
     
     
-    public HoldLevel(){      
+    public HoldLevel(){   
+        zeroMine = new ArrayList<Mine>();
         oneWall = new ArrayList<Wall>();
         oneMine = new ArrayList<Mine>();
         twoWall = new ArrayList<Wall>();
+        createLevelZeroMines();
         createLevelOneWalls();
         createLevelOneMines();
         createLevelTwoWalls();
+    }/**
+     * Creates mines for help up level, level zero
+     */
+    private void createLevelZeroMines(){
+        int helpNumber = 20;
+        for (int i=0; i<15; i++){
+            zeroMine.add(new Mine(helpNumber, 220, true));
+            helpNumber += 20;
+        }
+        
+        helpNumber = 60;
+        for (int i=0; i<15; i++){
+            zeroMine.add(new Mine(helpNumber, 185, true));
+            helpNumber += 20;
+        }
+        
+        helpNumber = 60;
+        for (int i=0; i<15; i++){
+            zeroMine.add(new Mine(helpNumber, 170, true));
+            helpNumber += 20;
+        }
+    }
+    
+    public ArrayList<Mine> getZeroMines(){
+        return zeroMine;
     }
     
     /**
@@ -48,8 +80,8 @@ public class HoldLevel {
      */
     private void createLevelOneMines(){
         oneMine.add(new Mine(160, 150, true)); //false
-        oneMine.add(new Mine(160, 160, true)); //false
-        oneMine.add(new Mine(165, 150, true)); //false
+        oneMine.add(new Mine(160, 170, true)); //false
+        oneMine.add(new Mine(165, 70, true)); //false
     }
     
     public ArrayList<Mine> getOneMines(){
@@ -57,6 +89,13 @@ public class HoldLevel {
     }
     
     public void createLevelTwoWalls(){
-        
+        twoWall.add(new Wall(170, 170, 60, 20));
+        twoWall.add(new Wall(210, 120, 20, 60));
+        twoWall.add(new Wall(120, 120, 110, 20));
+        twoWall.add(new Wall(120, 120, 20, 100));
+    }
+    
+    public ArrayList<Wall> getTwoWalls(){
+        return twoWall;
     }
 }

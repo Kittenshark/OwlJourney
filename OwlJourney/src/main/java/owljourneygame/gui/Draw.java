@@ -53,7 +53,7 @@ public class Draw extends JPanel{
     public void drawGoal(Graphics graphics){
         BufferedImage goalPicture = null;
         try {
-            goalPicture = ImageIO.read(new File(("src\\main\\pictures\\GoalF.gif")));
+            goalPicture = ImageIO.read(new File(("src\\main\\pictures\\GoalFg.gif")));
             } catch(Exception e){
             System.out.println("No image found");
         }
@@ -63,7 +63,7 @@ public class Draw extends JPanel{
     public void drawMines(Graphics graphics){
         BufferedImage minePicture = null;
         try {
-            minePicture = ImageIO.read(new File("src\\main\\pictures\\MineP.gif"));
+            minePicture = ImageIO.read(new File("src\\main\\pictures\\MineRed.gif"));
         } catch(Exception e){
             System.out.println("No image found");
         }

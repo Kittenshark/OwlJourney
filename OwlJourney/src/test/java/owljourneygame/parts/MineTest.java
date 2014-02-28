@@ -34,7 +34,7 @@ public class MineTest {
     
     @Before
     public void setUp() {
-        mine = new Mine(20, 35);
+        mine = new Mine(20, 35, true);
     }
     
     @After
@@ -55,12 +55,26 @@ public class MineTest {
     
     @Test
     public void mineHasRightSize(){
-        mine.setSide(10);
-        assertEquals(mine.size, 10);
+        mine.setSize(10);
+        assertEquals(mine.getSize(), 10);
     }
     
     @Test
-    public void mineIsTrueWhenCreated(){
+    public void visibleMineIsVisible(){
+        assertTrue(mine.getVisible());
+    }
+    
+    @Test
+    public void settingMineInactiveWorks(){
+        mine.setInActive();
         
+        assertFalse(mine.getActive());
+    }
+    
+    @Test
+    public void settingMineActiveWorks(){
+        mine.setActive();
+        
+        assertTrue(mine.getActive());
     }
 }

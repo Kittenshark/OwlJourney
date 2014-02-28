@@ -1,4 +1,6 @@
-
+/**
+ * Wall. Limits area where owl can move
+ */
 package owljourneygame.parts;
 
 import java.awt.Graphics;

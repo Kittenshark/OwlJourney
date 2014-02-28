@@ -1,4 +1,6 @@
-
+/**
+ * Used to set moving direction for owl
+ */
 
 package owljourneygame.Game;
 

@@ -8,6 +8,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import owljourneygame.Game.MoveSide;
 
 
 public class OwlTest {
@@ -26,7 +27,7 @@ public class OwlTest {
     
     @Before
     public void setUp() {
-        owl = new Owl(30, 35, 10);
+        owl = new Owl(30, 35, 15);
     }
     
     @After
@@ -41,12 +42,13 @@ public class OwlTest {
     
     @Test
     public void owlSizeisRight(){
-        assertEquals(owl.getSize(), 10);
+        assertEquals(owl.getSize(), 15);
     }
     
     @Test
     public void whenMovingOwlXIsRight(){
-        owl.moveOwl(2);
+        owl.setOwlDirection(MoveSide.D);
+        owl.moveOwl();
         
         assertEquals(owl.getX(), 30);
         assertEquals(owl.getY(), 45);
@@ -54,6 +56,7 @@ public class OwlTest {
     
     @Test
     public void movingOwlFiveTimesWorksX(){
+        owl.setOwlDirection(MoveSide.R);
         forLoopThatOwl();
         assertEquals(owl.getX(), 80);
         assertEquals(owl.getY(), 35);
@@ -61,7 +64,16 @@ public class OwlTest {
     
     public void forLoopThatOwl(){
         for (int i=0; i<5; i++){
-            owl.moveOwl(0);
+            owl.moveOwl();
         }
+    }
+    
+    @Test
+    public void owlCanMoveUp(){
+        owl.setOwlDirection(MoveSide.U);
+        owl.moveOwl();
+        
+        assertEquals(30, owl.getX());
+        assertEquals(25, owl.getY());
     }
 }

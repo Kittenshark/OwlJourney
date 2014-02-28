@@ -52,14 +52,6 @@ public class UserInterface implements Runnable{
         return frame;
     }
     
-    public UpdateGame getUpdate(){
-        return draw;
-    }
-    
-    public Draw getDraw(){
-        return draw;
-    }
-    
     public void letsPaint(){
         frame.getContentPane().repaint();
     }

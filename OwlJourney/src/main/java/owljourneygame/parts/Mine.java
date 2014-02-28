@@ -1,3 +1,6 @@
+/**
+ * Mines are devils of the game. Mine can be visible or invisible.
+ */
 package owljourneygame.parts;
 
 import java.awt.Rectangle;
@@ -27,11 +30,12 @@ public class Mine {
      * When mine is created, it is active
      * @param x X-axis location
      * @param y Y-axis location
+     * @param visible sets whether mine can be seen or not
      */
     public Mine(int x, int y, boolean visible){
         this.x = x;
         this.y = y;
-        this.size = 10;
+        this.size = 15;
         this.visible = visible;
         active = true;
     }
@@ -78,11 +82,4 @@ public class Mine {
     public Rectangle getBounds(){
         return new Rectangle(x, y, size, size);
     }
-
-    /*
-    Perusmiina ei liiku.
-    Kentällä voi olla usea miina.
-    Alustavaksi piirretään ihan pyöreiksi.
-    Tällä hetkellä kaikki samankokoisia, mutta voi muuttua
-    */
 }

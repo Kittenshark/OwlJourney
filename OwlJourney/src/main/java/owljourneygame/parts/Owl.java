@@ -1,9 +1,9 @@
-
+/**
+ * Main character of the game. Owl has coordinates and size.
+ */
 package owljourneygame.parts;
 
-import java.awt.Graphics;
 import java.awt.Rectangle;
-import java.util.ArrayList;
 import owljourneygame.Game.MoveSide;
 
 public class Owl{
@@ -20,16 +20,17 @@ public class Owl{
      */
     private int y;
     private MoveSide move;
+    private int energy;
     
     public Owl(int x, int y, int side){
         this.size = side;
         this.x = x;
         this.y = y;
+        energy = 100;
     }
     
     /**
-     * Moves owl to wanted direction
-     * @param where direction where owl will move
+     * Moves owl to direction that has been set
      */
     public void moveOwl() {
         if (move.getWhere() == 0){
@@ -57,6 +58,17 @@ public class Owl{
     public void setOwlDirection(MoveSide move){
         this.move = move;
     }
+    
+    public void setEnergy(){
+        energy = 100;
+    }
+    
+    public void loseEnergy(int lose){
+        if (energy - lose >= 0){
+            energy -= lose;
+        }
+    }
+    
     //get
     public int getX(){
         return x;
@@ -68,6 +80,10 @@ public class Owl{
     
     public int getSize(){
         return size;
+    }
+    
+    public int getEnergy(){
+        return energy;
     }
     
     public MoveSide getMoveDirection(){

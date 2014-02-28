@@ -42,6 +42,6 @@ public class FinishLineTest {
 
     @Test
     public void FinishLineHasRightSize(){
-        assertEquals(win.getSide(), 10);
+        assertEquals(win.getSide(), 20);
     }
 }

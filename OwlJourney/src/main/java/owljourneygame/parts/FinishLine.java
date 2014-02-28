@@ -1,4 +1,7 @@
-
+/**
+ * Goal
+ * Level is complete if the owl reaches goal
+ */
 
 package owljourneygame.parts;
 
@@ -28,11 +31,11 @@ public class FinishLine {
     }
     
     public int getSide(){
-        return 10;
+        return 20;
         //goal, mine, owl sivun pituus 10
     }
     
     public Rectangle getBounds(){
-        return new Rectangle(x, y, 10, 10);
+        return new Rectangle(x, y, 20, 20);
     }
 }

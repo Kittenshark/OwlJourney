@@ -9,9 +9,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import owljourneygame.levels.AllLevels;
 import owljourneygame.parts.Mine;
-import owljourneygame.parts.Owl;
 import owljourneygame.parts.Wall;
 
 
@@ -34,33 +32,28 @@ public class GamePlatformTest {
     public void setUp() {
         game = new GamePlatform();
         setUpWalls1 = new ArrayList<Wall>();
+        game.getOwl().setOwlDirection(MoveSide.R);
     }
     
     @After
     public void tearDown() {
     }
     
+    //testing owl
     @Test
     public void owlStartingPositionIsRight(){
         assertEquals(game.getOwl().getX(), 30);
         assertEquals(game.getOwl().getY(), 240);
-        //30, 240, 10
+        //30, 240, 15
     }
     
     @Test
     public void owlIsRightSize(){
-        assertEquals(game.getOwl().getSize(), 10);
-    }
-    
-    
-    @Test
-    public void hittingMineMakesMineInactive(){
-        //game.hitMine();
+        assertEquals(game.getOwl().getSize(), 15);
     }
     
     @Test
     public void movingOwlMovesOwl(){
-        game.whereToMove(MoveSide.R);
         game.moveOwl();
         
         assertEquals(game.getOwl().getX(), 40);
@@ -76,26 +69,25 @@ public class GamePlatformTest {
     }
     
     public void moveOwl(){
-        game.whereToMove(MoveSide.R);
         for (int i=0; i<5; i++){
             game.moveOwl();
         }
     }
     
+    //testing levels
     @Test
     public void gameStartsAtLevelZero(){
         
-        assertEquals(game.getLevel().getGoal().getX(), 350);
-        assertEquals(game.getLevel().getGoal().getY(), 30);
+        assertEquals(340, game.getLevel().getGoal().getX());
+        assertEquals(30, game.getLevel().getGoal().getY());
         //350, 30
-        //goal sijainti vastaa
     }
     
     @Test
     public void levelReturnGivesRightLevel(){
         if (game.getWhichLevel() == 0){
-            assertEquals(game.getLevel().getGoal().getX(), 350);
-            assertEquals(game.getLevel().getGoal().getY(), 30);
+            assertEquals(340, game.getLevel().getGoal().getX());
+            assertEquals(30, game.getLevel().getGoal().getY());
         }
         
         if (game.getWhichLevel() == 1){
@@ -125,34 +117,6 @@ public class GamePlatformTest {
         // 20, 280, 360, 20
     }
     
-    
-    @Test
-    public void owlNotMoveOverWalls(){
-        game.whereToMove(MoveSide.L);
-        game.moveOwl();
-        game.moveOwl();
-        
-        assertEquals(20, game.getOwl().getX());
-        assertEquals(240, game.getOwl().getY());
-    }
-    
-    @Test
-    public void hittingMineWorks(){
-        Owl owlie = new Owl(50, 50, 10);
-        Mine mine = new Mine(60, 60);
-        owlie.moveOwl(0);  
-    }
-    
-    @Test
-    public void afterFirstLevel0YouGetSecondLevel1(){
-        game.goNextLevel();
-        assertEquals(game.getWhichLevel(), 1);
-        
-        for (int i=0; i<setUpWalls1.size(); i++){
-            assertTrue(setUpWalls1.get(i).equals(game.getLevel().getWalls().get(i)));
-        }
-    }
-    
     public void reCreateLevelOneWalls(){
         setUpWalls1.add(new Wall(0, 0, 360, 20));
         setUpWalls1.add(new Wall(360, 0, 20, 280));
@@ -171,16 +135,66 @@ public class GamePlatformTest {
         setUpWalls1.add(new Wall(110, 100, 50, 100));
         setUpWalls1.add(new Wall(180, 100, 50, 100));
     }
+     
+    @Test
+    public void afterFirstLevel0YouGetSecondLevel1(){
+        game.goNextLevel();
+        assertEquals(game.getWhichLevel(), 1);
+        
+        for (int i=0; i<setUpWalls1.size(); i++){
+            assertTrue(setUpWalls1.get(i).equals(game.getLevel().getWalls().get(i)));
+        }
+    }
     
     public void decreasingLifePointsWorks(){
         game.takeLives();
         
         assertEquals(game.getLifePoints(), 2);
+    }   
+    
+    @Test
+    public void afterTwoGoalsWeReachLevelTwo(){
+        game.goNextLevel();
+        game.goNextLevel();
+        
+        assertEquals(2, game.getWhichLevel());
     }
     
- 
+    @Test
+    public void gameEndsAfterLevelsRunOut(){
+        for (int i=0; i < game.getAllLevels().size(); i++){
+            game.goNextLevel();
+        }
+        
+        assertEquals(game.getAllLevels().size()-1, game.getWhichLevel());
+    }
     
-
+    //testing collision mechanics
+    @Test
+    public void owlNotMoveOverWalls(){
+        game.getOwl().setOwlDirection(MoveSide.L);
+        game.moveOwl();
+        game.moveOwl();
+        
+        assertEquals(20, game.getOwl().getX());
+        assertEquals(240, game.getOwl().getY());
+    }
     
+    @Test
+    public void hittingMineWorks(){
+        game.goNextLevel();
+        game.getOwl().setOwl(160, 180);
+        game.getOwl().moveOwl();
+        
+        assertTrue(game.hitMine());
+        
+    }
     
+    @Test
+    public void hittingGoalWorks(){
+        game.getOwl().setOwl(325, 30);
+        game.getOwl().moveOwl();
+        
+        assertTrue(game.hitGoal());
+    }
 }
