@@ -13,7 +13,7 @@
 17.2	120min actionlistener toimii, mutta actionperformed ei reagoi mihinkaan. Kuvia kayttoliittymaa varten
 20.2	60min kuvien polku toimii paremmin ja peli kutsuu nyt GamePlatform game metodia, jossa peli ns suoritetaan
 27.2	60min kayttoliittyman toimintaa
-28.2	1050min muutaman kentan lisays, paljon grafiikkaa uusiksi, kayttoliittyma toimii jotenkin tosin ei parhaalla tavalla, kenttien uudelleen piirto onnistuu, 
+28.2	1080min muutaman kentan lisays, paljon grafiikkaa uusiksi, kayttoliittyma toimii jotenkin tosin ei parhaalla tavalla, kenttien uudelleen piirto onnistuu, 
 lentomahdollisuus lisatty, ei menna enaa seinien lapi, miinoihin ja maaliin voi osua, miinaan osuessa isketaan kiva pikseliteksti ruutuun, pollon ja miinojen kokoa saadetty, 
 Miina voi vihdoin olla nakymaton vaarallinen ja aktiivinen, peli loppuu jotenkin jarkevalla tavalla eli pelaajalle tiedotetaan pelin loppumisesta, joitakin testeja tosin en 
 usko niita olevan tarpeeksi, Koodin siistimista tai no ylimaaraisen koodin poistoa, ,kaiken dokumentoinnin tekeminen kuten sekvenssikaavioiden lisays ja javadocin taydennysta. 
