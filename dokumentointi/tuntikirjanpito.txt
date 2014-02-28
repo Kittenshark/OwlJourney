@@ -1,6 +1,6 @@
 2014
 
-14.1  	noin 1h 	githubin toiminnan hakkaamiseen 
+14.1  	60min githubin toiminnan hakkaamiseen 
 15.1	40min Netbeans toimintaan ja aiheen kuvauksen lisays
 16.1	15min Kuvauksen tarkennus, ideointia
 17.1	70min koodauksen aloitus, ei suurta
@@ -11,3 +11,8 @@
 29.1	60min muutoksia luokkiin, testeihin
 13.2	140min sekvenssikaavioita, testeja
 17.2	120min actionlistener toimii, mutta actionperformed ei reagoi mihinkaan. Kuvia kayttoliittymaa varten
+20.2	60min kuvien polku toimii paremmin ja peli kutsuu nyt GamePlatform game metodia, jossa peli ns suoritetaan
+27.2	60min kayttoliittyman toimintaa
+28.2	1050min muutaman kentan lisays, paljon grafiikkaa uusiksi, kayttoliittyma toimii jotenkin tosin ei parhaalla tavalla, kenttien uudelleen piirto onnistuu, lentomahdollisuus lisatty, ei menna enaa seinien lapi, miinoihin ja maaliin voi osua, miinaan osuessa isketaan kiva pikseliteksti ruutuun, pollon ja miinojen kokoa saadetty, peli loppuu jotenkin jarkevalla tavalla eli pelaajalle tiedotetaan pelin loppumisesta, joitakin testeja tosin en usko niita olevan tarpeeksi, Koodin siistimista tai no ylimaaraisen koodin poistoa, ,kaiken dokumentoinnin tekeminen kuten sekvenssikaavioiden lisays ja javadocin taydennysta. Jar ei suostunut toimimaan. Omalla koneella toimii hyvin, mutta toisella koneella main class ei loydy. Polku pitaisi olla siella ja pitaisi olla oikea, mutta jotain on hamaraa.  
+
+Nukkuminen on hieno asia. Paljon asiaa, jota olisi ollut kiva lisata, mutta nain kay kun jaa roikkumaan!
