@@ -5,15 +5,7 @@ package owljourneygame.parts;
 
 import java.awt.Rectangle;
 
-public class Mine {
-    /**
-     * Coordinates of X-axis
-     */
-    protected int x;
-    /**
-     * Coordinates of Y-axis
-     */
-    protected int y;
+public class Mine extends Dot{
     /**
      * Determines the size of the of the mine
      */
@@ -23,6 +15,9 @@ public class Mine {
      */
     private boolean active;
     
+    /**
+     * Shows will mine be visible for the player or not
+     */
     private boolean visible;
     
     /**
@@ -33,19 +28,10 @@ public class Mine {
      * @param visible sets whether mine can be seen or not
      */
     public Mine(int x, int y, boolean visible){
-        this.x = x;
-        this.y = y;
+        super(x, y);
         this.size = 15;
         this.visible = visible;
         active = true;
-    }
-    
-    public int getX(){
-        return x;
-    }
-    
-    public int getY(){
-        return y;
     }
     
     public int getSize(){
@@ -79,6 +65,10 @@ public class Mine {
         active = false;
     }
     
+    /**
+     * 
+     * @return Rectangle of mine
+     */
     public Rectangle getBounds(){
         return new Rectangle(x, y, size, size);
     }

@@ -4,7 +4,6 @@ package owljourneygame.owljourney;
 
 import javax.swing.SwingUtilities;
 import owljourneygame.Game.GamePlatform;
-import owljourneygame.gui.UpdateGame;
 import owljourneygame.gui.UserInterface;
 
 

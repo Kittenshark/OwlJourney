@@ -3,16 +3,16 @@ package owljourneygame.gui;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.util.ArrayList;
 import javax.imageio.ImageIO;
-import javax.swing.JOptionPane;
 
 import javax.swing.JPanel;
 import owljourneygame.Game.GamePlatform;
 import owljourneygame.parts.Mine;
 import owljourneygame.parts.Wall;
+
 
 
 public class Draw extends JPanel{
@@ -33,7 +33,7 @@ public class Draw extends JPanel{
         super.paintComponent(graphics);
         BufferedImage background = null;
         try {
-           background = ImageIO.read(new File("src\\main\\pictures\\Background.gif"));  
+           background = ImageIO.read(getClass().getClassLoader().getResource("pictures/Background.gif"));  
         } catch(Exception e) {
             System.out.println("No image found");
         }
@@ -55,9 +55,13 @@ public class Draw extends JPanel{
         drawOwl(graphics);
     }
     public void drawOwl(Graphics graphics){
-        BufferedImage owliePicture = null;
+        
+        Image owliePicture = null;
+        
         try {
-           owliePicture = ImageIO.read(new File("src\\main\\pictures\\Owlie.gif"));  
+ 
+            owliePicture = ImageIO.read(getClass().getClassLoader().getResource("pictures/Owlie.gif"));
+           
         } catch(Exception e) {
             System.out.println("No image found");
         }
@@ -67,7 +71,7 @@ public class Draw extends JPanel{
     public void drawGoal(Graphics graphics){
         BufferedImage goalPicture = null;
         try {
-            goalPicture = ImageIO.read(new File(("src\\main\\pictures\\GoalFg.gif")));
+            goalPicture = ImageIO.read(getClass().getClassLoader().getResource("pictures/GoalFg.gif"));;
             } catch(Exception e){
             System.out.println("No image found");
         }
@@ -77,7 +81,7 @@ public class Draw extends JPanel{
     public void drawMines(Graphics graphics){
         BufferedImage minePicture = null;
         try {
-            minePicture = ImageIO.read(new File("src\\main\\pictures\\MineRed.gif"));
+            minePicture = ImageIO.read(getClass().getClassLoader().getResource("pictures/MineRed.gif"));
         } catch(Exception e){
             System.out.println("No image found");
         }
@@ -102,7 +106,7 @@ public class Draw extends JPanel{
     public void drawHealthBar(Graphics graphics){
         BufferedImage barPicture = null;
         try {
-            barPicture = ImageIO.read(new File("src\\main\\pictures\\LifeBar2.gif"));
+            barPicture = ImageIO.read(getClass().getClassLoader().getResource("pictures/LifeBar2.gif"));
         } catch(Exception e){
             System.out.println("No image found");
         }
@@ -113,7 +117,7 @@ public class Draw extends JPanel{
     public void drawHealthMouse(Graphics graphics){
         BufferedImage mousePicture = null;
         try {
-            mousePicture = ImageIO.read(new File("src\\main\\pictures\\MouseLife.gif"));
+            mousePicture = ImageIO.read(getClass().getClassLoader().getResource("pictures/MouseLife.gif"));
         } catch(Exception e){
             System.out.println("No image found");
         }
@@ -133,43 +137,43 @@ public class Draw extends JPanel{
         BufferedImage energyBarPicture = null;
         if (game.getOwl().getEnergy() == 20 || game.getOwl().getEnergy() == 30){
             try {
-                energyBarPicture = ImageIO.read(new File("src\\main\\pictures\\Energy20.gif"));
+                energyBarPicture = ImageIO.read(getClass().getClassLoader().getResource("pictures/Energy20.gif"));
             } catch(Exception e){
                 System.out.println("No image found");
                 }
         } else if (game.getOwl().getEnergy() == 40 ){
             try {
-                energyBarPicture = ImageIO.read(new File("src\\main\\pictures\\Energy40.gif"));
+                energyBarPicture = ImageIO.read(getClass().getClassLoader().getResource("pictures/Energy40.gif"));
             } catch(Exception e){
                 System.out.println("No image found");
                 }
         } else if (game.getOwl().getEnergy() == 50){
             try {
-                energyBarPicture = ImageIO.read(new File("src\\main\\pictures\\EnergyHalf.gif"));
+                energyBarPicture = ImageIO.read(getClass().getClassLoader().getResource("pictures/EnergyHalf.gif"));
             } catch(Exception e){
                 System.out.println("No image found");
             }
         } else if (game.getOwl().getEnergy() == 60){
             try {
-                energyBarPicture = ImageIO.read(new File("src\\main\\pictures\\Energy60.gif"));
+                energyBarPicture = ImageIO.read(getClass().getClassLoader().getResource("pictures/Energy60.gif"));
             } catch(Exception e){
                 System.out.println("No image found");
             }
         } else if (game.getOwl().getEnergy() == 80){
             try {
-                energyBarPicture = ImageIO.read(new File("src\\main\\pictures\\Energy80.gif"));
+                energyBarPicture = ImageIO.read(getClass().getClassLoader().getResource("pictures/Energy80.gif"));
             } catch(Exception e){
                 System.out.println("No image found");
             }
         } else if (game.getOwl().getEnergy() == 100){
             try {
-                energyBarPicture = ImageIO.read(new File("src\\main\\pictures\\EnergyFull.gif"));
+                energyBarPicture = ImageIO.read(getClass().getClassLoader().getResource("pictures/EnergyFull.gif"));
             } catch(Exception e){
                 System.out.println("No image found");
             }
         } else if (game.getOwl().getEnergy() < 20) {
             try {
-                energyBarPicture = ImageIO.read(new File("src\\main\\pictures\\EmptyEnergy.gif"));
+                energyBarPicture = ImageIO.read(getClass().getClassLoader().getResource("pictures/EmptyEnergy.gif"));
             } catch(Exception e){
                 System.out.println("No image found");
             }
@@ -178,10 +182,10 @@ public class Draw extends JPanel{
     }
     
     public void MineWasHit(){
-        System.out.println("BOOMdd");
+        System.out.println("BOOM");
         BufferedImage boomPicture = null;
         try {
-                boomPicture = ImageIO.read(new File("src\\main\\pictures\\Boom.gif"));
+                boomPicture = ImageIO.read(getClass().getClassLoader().getResource("pictures/Boom.gif"));
             } catch(Exception e){
                 System.out.println("No image found");
             }

@@ -1,4 +1,7 @@
-
+/**
+ * Level
+ * Combines all information game needs to know about specific level. Keeps information of mines and walls.
+ */
 
 package owljourneygame.levels;
 
@@ -12,7 +15,13 @@ public class AllLevels {
     FinishLine goal;
     ArrayList<Mine> mines;
     ArrayList<Wall> walls;
+    /**
+     * X-coordinates where owl will start this level
+     */
     private int owlieX;
+    /**
+     * Y-coordinates where owl will start this level
+     */
     private int owlieY;
     
     public AllLevels(int owlieX, int owlieY, FinishLine goal){
@@ -56,15 +65,15 @@ public class AllLevels {
     
     /**
      * Method adds one wall to the wanted level
-     * @param wall single wall that is being added
+     * @param wall wall to be added
      */
     public void addWall(Wall wall){
         walls.add(wall);
     }
     
     /**
-     * Method adds new walls to the wanted level
-     * @param manyWalls List of walls that are being added
+     * Method adds new walls to level
+     * @param manyWalls List of walls to be added
      */   
     public void addWalls(ArrayList<Wall> manyWalls){
         for (Wall w : manyWalls){
@@ -74,15 +83,15 @@ public class AllLevels {
     
     /**
      * Adds one mine to the wanted level
-     * @param mine Mine that is being added
+     * @param mine mine to be added
      */
     public void addMine(Mine mine){
         mines.add(mine);
     }
     
     /**
-     * Adds many mines in a list to the wanted level
-     * @param manyMines List of mines
+     * Adds many mines in a list to level
+     * @param manyMines List of mines to be added
      */
     public void addMines(ArrayList<Mine> manyMines){
        for (Mine m : manyMines){

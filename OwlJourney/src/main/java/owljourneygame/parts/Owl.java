@@ -19,7 +19,7 @@ public class Owl{
      * Owl Y-axis coordinates
      */
     private int y;
-    private MoveSide move;
+    private MoveSide move = null;
     private int energy;
     
     public Owl(int x, int y, int side){
@@ -30,18 +30,22 @@ public class Owl{
     }
     
     /**
-     * Moves owl to direction that has been set
+     * Moves owl to direction that has been set before
+     * Method does not work if owl has no set direction
      */
     public void moveOwl() {
-        if (move.getWhere() == 0){
-            x += 10;
-        } else if(move.getWhere() == 1){ //vasen
-            x -= 10;
-        }else if (move.getWhere() == 2){ //alas
-            y += 10;
-        } else if (move.getWhere() == 3) { //ylös
-            y -= 10;
+        if (move != null){
+            if (move.getWhere() == 0){
+                x += 10;
+            } else if(move.getWhere() == 1){ //vasen
+                x -= 10;
+            }else if (move.getWhere() == 2){ //alas
+                y += 10;
+            } else if (move.getWhere() == 3) { //ylös
+                y -= 10;
+            }  
         }
+        
     }
     
     /**
@@ -63,6 +67,11 @@ public class Owl{
         energy = 100;
     }
     
+    /**
+     * Decreases owls energy
+     * Energy will go down only if owl has enough energy that it needs to use
+     * @param lose how much energy owl will lose
+     */
     public void loseEnergy(int lose){
         if (energy - lose >= 0){
             energy -= lose;
@@ -90,6 +99,10 @@ public class Owl{
         return move;
     }
     
+    /**
+     * 
+     * @return Rectangle of Owl
+     */
     public Rectangle getBounds(){
         return new Rectangle(x, y, size, size);
     }

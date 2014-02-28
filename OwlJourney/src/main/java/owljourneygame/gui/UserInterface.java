@@ -6,12 +6,10 @@ import ActionListeners.ListenKeys;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
 import owljourneygame.Game.GamePlatform;
 
@@ -63,7 +61,7 @@ public class UserInterface implements Runnable{
     public void gameEnded(){
         frame.setVisible(false);
         JFrame frame2 = new JFrame("Game Over!");
-        frame2.setSize(200, 50);
+        frame2.setPreferredSize(new Dimension(350, 150));
         frame2.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         createComponentsForSecondFrame(frame2);
         frame2.pack();
@@ -71,7 +69,9 @@ public class UserInterface implements Runnable{
     }
     
     public void createComponentsForSecondFrame(Container container){
-        JLabel text = new JLabel("Game Over!");
+        int currentLevel = game.getWhichLevel();
+        String printThis = "Game Over! \n You got to level "+currentLevel+". Last level is level 2";
+        JLabel text = new JLabel(printThis);
         text.setHorizontalAlignment(JLabel.CENTER);
         container.add(text);
     }

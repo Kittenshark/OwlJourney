@@ -1,4 +1,6 @@
-
+/**
+ * X and Y coordinates
+ */
 
 package owljourneygame.parts;
 

@@ -1,5 +1,6 @@
 /**
  * Main game happens here.
+ * Logic of the game is implemented here
  */
 package owljourneygame.Game;
 
@@ -14,10 +15,22 @@ import owljourneygame.parts.Owl;
 import owljourneygame.parts.Wall;
 
 public class GamePlatform {
+    /**
+     * Includes all playable levels
+     */
     private ArrayList<AllLevels> levels;
+    /**
+     * Indicates current level
+     */
     private int whichLevel;
     private Owl owl;
+    /**
+     * How much life owl has
+     */
     private int lifepoints;
+    /**
+     * Will owl move or not
+     */
     private boolean isItMovingTime = false;
     private HoldLevel createL;
     private UserInterface draw;
@@ -81,10 +94,17 @@ public class GamePlatform {
         return gameover;
     }
     
+    /**
+     * Decreases owls lifepoints.
+     */
     public void takeLives(){
         lifepoints--;
     }
     
+    /**
+     * When level is completed, method sets next level for the player.
+     * If player is playing last level game will end insted of moving to next level.
+     */
     public void goNextLevel(){
         if ((whichLevel + 1) < levels.size()){
             whichLevel++; 
@@ -95,7 +115,7 @@ public class GamePlatform {
     /**
      * Checks if player hits a mine.
      * 
-     * @return Whether owl hit the mine or not
+     * @return Whether owl hits mines or not
      */
     public boolean hitMine(){
         Rectangle o = owl.getBounds();
@@ -113,6 +133,10 @@ public class GamePlatform {
         return false;
     }
     
+    /**
+     * Checks if player hits the goal
+     * @return whether owl hit goal or not
+     */
     public boolean hitGoal(){
         Rectangle o = owl.getBounds();
         Rectangle f = levels.get(whichLevel).getGoal().getBounds();
@@ -162,22 +186,18 @@ public class GamePlatform {
         return false;
     }
     /**
-     * Plays the game
-     * If player runs out of lifepoints game ends
-     * Game ends if player clears all levels
-     * Method triggers moving of owl and everything related to it
-     * If goal is reached owl will get full energy
+     * Plays the game.
+     * If player runs out of lifepoints, game ends. Game also ends if player clears all levels.
+     * Method triggers moving of owl and everything related to it.
+     * Also checks if owl hit any mines or goal.
+     * If goal is reached owl will get full energy.
+     * If player clicks any keys other than intentioned keys, owl will not move.
+     * After method is completed, isItMovingTime is set false so player can not move without playing along game mechanics.
      */
     public void PlayGame() {
         if (lifepoints <= 0){
             gameover = true;
             //out of life
-        }
-        
-        if (whichLevel >= levels.size()){
-            gameover = true;
-            System.out.println("YOU CLEARED THE GAME!");
-            //out of levels
         }
         
         if (gameover == true){

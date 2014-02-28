@@ -3,7 +3,6 @@
  */
 package owljourneygame.parts;
 
-import java.awt.Graphics;
 import java.awt.Rectangle;
 
 
@@ -50,7 +49,7 @@ public class Wall extends Dot{
 
     /**
      *
-     * @return
+     * @return Rectangle of Wall
      */
     public Rectangle getBounds(){
         return new Rectangle(x, y, width, height);
