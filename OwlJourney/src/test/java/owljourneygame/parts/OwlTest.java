@@ -34,6 +34,7 @@ public class OwlTest {
     public void tearDown() {
     }
 
+    //Moving owl
     @Test
     public void owlStartPositionIsRight(){
         assertEquals(owl.getX(), 30);
@@ -75,5 +76,29 @@ public class OwlTest {
         
         assertEquals(30, owl.getX());
         assertEquals(25, owl.getY());
+    }
+    
+    //Energy
+    @Test
+    public void owlDoesNotLoseEnergyUnder0(){
+        owl.loseEnergy(50);
+        owl.loseEnergy(60);
+        
+        assertTrue("Owl loses too much energy", owl.getEnergy() >= 0);
+    }
+    
+    @Test
+    public void owlDoesNotLoseEnergyIfItHasTooLittle(){
+        owl.loseEnergy(50);
+        owl.loseEnergy(60);
+        
+        assertEquals(50, owl.getEnergy());
+    }
+    
+    @Test
+    public void owlLosesRightAmountOfEnergy(){
+        owl.loseEnergy(20);
+        
+        assertEquals(80, owl.getEnergy());
     }
 }

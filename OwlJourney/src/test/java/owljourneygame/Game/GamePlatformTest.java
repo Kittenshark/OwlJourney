@@ -191,10 +191,29 @@ public class GamePlatformTest {
     }
     
     @Test
+    public void notHittingMineDoesNotTriggerAnyMine(){
+        game.getOwl().setOwlDirection(MoveSide.D);
+        game.getOwl().moveOwl();
+        
+        assertFalse("Mine was hit that is not there", game.hitMine());
+    }
+    
+    @Test
     public void hittingGoalWorks(){
         game.getOwl().setOwl(325, 30);
         game.getOwl().moveOwl();
+        game.getOwl().moveOwl();
         
-        assertTrue(game.hitGoal());
+        assertTrue("Goal was not there", game.hitGoal());
     }
+    
+    @Test
+    public void notHittingGoalDoesNotHitGoal(){
+        game.getOwl().setOwlDirection(MoveSide.D);
+        game.getOwl().moveOwl();
+        
+        assertFalse("Goal was hit when not intented", game.hitGoal());
+    }
+    
+    
 }

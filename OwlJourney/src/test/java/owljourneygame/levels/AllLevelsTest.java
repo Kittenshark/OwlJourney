@@ -30,7 +30,7 @@ public class AllLevelsTest {
     
     @Before
     public void setUp() {
-        level = new AllLevels(0, 0, new FinishLine (100, 100));
+        level = new AllLevels(50, 100, new FinishLine (100, 100));
     }
     
     @After
@@ -55,5 +55,11 @@ public class AllLevelsTest {
         
         assertEquals(1, level.getMines().size());
         assertNotNull("Mine is not null", level.getMines().get(0));
+    }
+    
+    @Test
+    public void OwlLevelStartUpWorks(){
+        assertEquals(50, level.getOwlieStartX());
+        assertEquals(100, level.getOwlieStartY());
     }
 }

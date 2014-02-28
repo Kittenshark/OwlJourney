@@ -16,6 +16,7 @@ public class HoldLevel {
     ArrayList<Wall> oneWall;
     ArrayList<Mine> oneMine;
     ArrayList<Wall> twoWall;
+    ArrayList<Mine> twoMine;
     
     
     public HoldLevel(){   
@@ -23,10 +24,12 @@ public class HoldLevel {
         oneWall = new ArrayList<Wall>();
         oneMine = new ArrayList<Mine>();
         twoWall = new ArrayList<Wall>();
+        twoMine = new ArrayList<Mine>();
         createLevelZeroMines();
         createLevelOneWalls();
         createLevelOneMines();
         createLevelTwoWalls();
+        createLevelTwoMines();
     }/**
      * Creates mines for help up level, level zero
      */
@@ -93,9 +96,44 @@ public class HoldLevel {
         twoWall.add(new Wall(210, 120, 20, 60));
         twoWall.add(new Wall(120, 120, 110, 20));
         twoWall.add(new Wall(120, 120, 20, 100));
+        
+        twoWall.add(new Wall(120, 220, 140, 20));
+        twoWall.add(new Wall(260, 100, 20, 140));
+        twoWall.add(new Wall(80, 80, 200, 20));
+    }
+    
+    public void createLevelTwoMines(){
+        twoMine.add(new Mine(105, 65, false));
+        twoMine.add(new Mine(115, 50, false));
+        twoMine.add(new Mine(100, 30, false));
+        
+        int helpNumber = 280;
+        for (int i=0; i<3; i++){
+            twoMine.add(new Mine(helpNumber, 220, true));
+            helpNumber += 30;
+        }
+        helpNumber = 280;
+        for (int i=0; i<3; i++){
+            twoMine.add(new Mine(helpNumber, 180, true));
+            helpNumber += 30;
+        }
+        helpNumber = 280;
+        for (int i=0; i<3; i++){
+            twoMine.add(new Mine(helpNumber, 140, true));
+            helpNumber += 30;
+        }
+        helpNumber = 280;
+        for (int i=0; i<4; i++){
+            twoMine.add(new Mine(helpNumber, 60, true));
+            helpNumber += 20;
+        }
     }
     
     public ArrayList<Wall> getTwoWalls(){
         return twoWall;
+    }
+    
+    public ArrayList<Mine> getTwoMines(){
+        return twoMine;
     }
 }

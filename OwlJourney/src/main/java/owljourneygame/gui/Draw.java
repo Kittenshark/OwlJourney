@@ -7,6 +7,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.ArrayList;
 import javax.imageio.ImageIO;
+import javax.swing.JOptionPane;
 
 import javax.swing.JPanel;
 import owljourneygame.Game.GamePlatform;
@@ -16,27 +17,40 @@ import owljourneygame.parts.Wall;
 
 public class Draw extends JPanel{
     private GamePlatform game;
+    private Graphics graphics;
     
     public Draw(GamePlatform game){
-        Color color = new Color(7, 100, 10);
-        super.setBackground(color);
+        
+        //Color color = new Color(7, 100, 10);
+        //super.setBackground(color);
+        
         this.game = game;
     }
     
     @Override
     protected void paintComponent(Graphics graphics){
+        this.graphics = graphics;
         super.paintComponent(graphics);
+        BufferedImage background = null;
+        try {
+           background = ImageIO.read(new File("src\\main\\pictures\\Background.gif"));  
+        } catch(Exception e) {
+            System.out.println("No image found");
+        }
+        graphics.drawImage(background, 0, 0, this);
         
         Color wallGreen = new Color(6, 51, 7);
         graphics.setColor(wallGreen);
         drawWalls(graphics);     
         
+        drawHealthBar(graphics);
+        this.drawHealthMouse(graphics);
+        
+        drawEnergyBar(graphics);
+        
         drawGoal(graphics);
         
         drawMines(graphics);
-        
-        drawHealthBar(graphics);
-        this.drawHealthMouse(graphics);
         
         drawOwl(graphics);
     }
@@ -113,6 +127,65 @@ public class Draw extends JPanel{
         if (game.getLifePoints() == 3){
             graphics.drawImage(mousePicture, 52, 2, this);
         }
+    }
+    
+    public void drawEnergyBar(Graphics graphics){
+        BufferedImage energyBarPicture = null;
+        if (game.getOwl().getEnergy() == 20 || game.getOwl().getEnergy() == 30){
+            try {
+                energyBarPicture = ImageIO.read(new File("src\\main\\pictures\\Energy20.gif"));
+            } catch(Exception e){
+                System.out.println("No image found");
+                }
+        } else if (game.getOwl().getEnergy() == 40 ){
+            try {
+                energyBarPicture = ImageIO.read(new File("src\\main\\pictures\\Energy40.gif"));
+            } catch(Exception e){
+                System.out.println("No image found");
+                }
+        } else if (game.getOwl().getEnergy() == 50){
+            try {
+                energyBarPicture = ImageIO.read(new File("src\\main\\pictures\\EnergyHalf.gif"));
+            } catch(Exception e){
+                System.out.println("No image found");
+            }
+        } else if (game.getOwl().getEnergy() == 60){
+            try {
+                energyBarPicture = ImageIO.read(new File("src\\main\\pictures\\Energy60.gif"));
+            } catch(Exception e){
+                System.out.println("No image found");
+            }
+        } else if (game.getOwl().getEnergy() == 80){
+            try {
+                energyBarPicture = ImageIO.read(new File("src\\main\\pictures\\Energy80.gif"));
+            } catch(Exception e){
+                System.out.println("No image found");
+            }
+        } else if (game.getOwl().getEnergy() == 100){
+            try {
+                energyBarPicture = ImageIO.read(new File("src\\main\\pictures\\EnergyFull.gif"));
+            } catch(Exception e){
+                System.out.println("No image found");
+            }
+        } else if (game.getOwl().getEnergy() < 20) {
+            try {
+                energyBarPicture = ImageIO.read(new File("src\\main\\pictures\\EmptyEnergy.gif"));
+            } catch(Exception e){
+                System.out.println("No image found");
+            }
+        }
+        graphics.drawImage(energyBarPicture, 80, 0, this);
+    }
+    
+    public void MineWasHit(){
+        System.out.println("BOOMdd");
+        BufferedImage boomPicture = null;
+        try {
+                boomPicture = ImageIO.read(new File("src\\main\\pictures\\Boom.gif"));
+            } catch(Exception e){
+                System.out.println("No image found");
+            }
+        graphics.drawImage(boomPicture, 0, 0, this);
     }
     
 }

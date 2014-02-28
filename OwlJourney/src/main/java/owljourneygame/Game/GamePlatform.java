@@ -54,6 +54,7 @@ public class GamePlatform {
         //level2
         levels.add(new AllLevels(190, 150, new FinishLine(330, 40)));
         levels.get(2).addWalls(createL.getTwoWalls());
+        levels.get(2).addMines(createL.getTwoMines());
     }
     
     public Owl getOwl(){
@@ -85,7 +86,11 @@ public class GamePlatform {
     }
     
     public void goNextLevel(){
-        whichLevel++;
+        if ((whichLevel + 1) < levels.size()){
+            whichLevel++; 
+        } else {
+            gameover = true;
+        }
     }
     /**
      * Checks if player hits a mine.
@@ -99,7 +104,7 @@ public class GamePlatform {
             if (mine.getActive() == true){
                 if (o.contains(m) || o.intersects(m)){
                     mine.setInActive();
-                    System.out.println("osuttiin miinaan");
+                    //draw.mineWasHit();
                     return true;
                 } 
             }
@@ -111,8 +116,7 @@ public class GamePlatform {
     public boolean hitGoal(){
         Rectangle o = owl.getBounds();
         Rectangle f = levels.get(whichLevel).getGoal().getBounds();
-        if (o.intersects(f) || o.contains(f)){
-            System.out.println("Osuttiin maaliin");
+        if (f.contains(o)){
                 return true;
 
         }
@@ -128,7 +132,6 @@ public class GamePlatform {
         if (!wallCollision()){
             owl.moveOwl();  
         }
-        System.out.println("x = "+owl.getX()+" | y = "+owl.getY());
     }
     
     /**
@@ -153,7 +156,6 @@ public class GamePlatform {
         for (Wall wall : getLevel().getWalls()){
             Rectangle w = wall.getBounds();
             if (o.intersects(w)){
-                System.out.println("osuttiin seinään");
                 return true;
             }
         }
@@ -167,20 +169,21 @@ public class GamePlatform {
      * If goal is reached owl will get full energy
      */
     public void PlayGame() {
-        if (gameover == true){
-            return;
-        }
         if (lifepoints <= 0){
             gameover = true;
-            return;
             //out of life
         }
         
         if (whichLevel >= levels.size()){
             gameover = true;
-            return;
+            System.out.println("YOU CLEARED THE GAME!");
             //out of levels
         }
+        
+        if (gameover == true){
+            draw.gameEnded();
+        }
+        
         if (isItMovingTime){
            moveOwl(); 
         }
@@ -196,7 +199,8 @@ public class GamePlatform {
         }
         
         isItMovingTime = false;
-        draw.letsPaint();
+           
+        draw.letsPaint(); 
     }   
     
     public void setDraw(UserInterface face){
