@@ -14,16 +14,15 @@ import owljourneygame.parts.Mine;
 import owljourneygame.parts.Wall;
 
 
-
+/**
+ * Drawing platform.
+ * Draws all game graphics
+ */
 public class Draw extends JPanel{
     private GamePlatform game;
     private Graphics graphics;
     
     public Draw(GamePlatform game){
-        
-        //Color color = new Color(7, 100, 10);
-        //super.setBackground(color);
-        
         this.game = game;
     }
     
@@ -53,6 +52,11 @@ public class Draw extends JPanel{
         drawMines(graphics);
         
         drawOwl(graphics);
+        
+        if (game.getBoom()){
+           drawBoom();
+        }
+        
     }
     public void drawOwl(Graphics graphics){
         
@@ -114,6 +118,11 @@ public class Draw extends JPanel{
         graphics.drawImage(barPicture,20,0, null);
     }
     
+    /**
+     * Draws lifepoints.
+     * Drawing depends on how many lifepoints player has left
+     * @param graphics 
+     */
     public void drawHealthMouse(Graphics graphics){
         BufferedImage mousePicture = null;
         try {
@@ -133,6 +142,10 @@ public class Draw extends JPanel{
         }
     }
     
+    /**
+     * Draws energybar based on how much energy player has left
+     * @param graphics 
+     */
     public void drawEnergyBar(Graphics graphics){
         BufferedImage energyBarPicture = null;
         if (game.getOwl().getEnergy() == 20 || game.getOwl().getEnergy() == 30){
@@ -181,8 +194,7 @@ public class Draw extends JPanel{
         graphics.drawImage(energyBarPicture, 80, 0, this);
     }
     
-    public void MineWasHit(){
-        System.out.println("BOOM");
+    public void drawBoom(){
         BufferedImage boomPicture = null;
         try {
                 boomPicture = ImageIO.read(getClass().getClassLoader().getResource("pictures/Boom.gif"));

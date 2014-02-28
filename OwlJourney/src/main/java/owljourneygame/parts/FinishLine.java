@@ -1,10 +1,11 @@
+
+
+package owljourneygame.parts;
+
 /**
  * Goal
  * Level is complete if the owl reaches goal
  */
-
-package owljourneygame.parts;
-
 import java.awt.Rectangle;
 
 public class FinishLine extends Dot{

@@ -13,7 +13,9 @@ import javax.swing.JLabel;
 import javax.swing.WindowConstants;
 import owljourneygame.Game.GamePlatform;
 
-
+/**
+ * Interface the game uses
+ */
 public class UserInterface implements Runnable{
 
     private JFrame frame;
@@ -28,10 +30,7 @@ public class UserInterface implements Runnable{
     public void run() {
         frame = new JFrame("OwlJourney");
         
-        //frame.getContentPane().setLayout(new FlowLayout());
-        //frame.setPreferredSize(new Dimension(395, 335));
-        //380, 300
-
+        frame.setLocation(190, 220);
  
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
  
@@ -54,14 +53,22 @@ public class UserInterface implements Runnable{
         return frame;
     }
     
+    /**
+     * Repaints drawing platform.
+     */
     public void letsPaint(){
         frame.getContentPane().repaint();
     }
     
+    /**
+     * Creates a new frame.
+     * If game ends, this frame tells it to player and ends the game.
+     */
     public void gameEnded(){
         frame.setVisible(false);
         JFrame frame2 = new JFrame("Game Over!");
         frame2.setPreferredSize(new Dimension(350, 150));
+        frame2.setLocation(190, 300);
         frame2.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         createComponentsForSecondFrame(frame2);
         frame2.pack();
@@ -74,12 +81,5 @@ public class UserInterface implements Runnable{
         JLabel text = new JLabel(printThis);
         text.setHorizontalAlignment(JLabel.CENTER);
         container.add(text);
-    }
-    
-    public void mineWasHit(){
-        JButton kaboom = new JButton("BOOM!");
-        ButtonGroup ainoa = new ButtonGroup();
-        ainoa.add(kaboom);
-        frame.getContentPane().add(kaboom);
     }
 }

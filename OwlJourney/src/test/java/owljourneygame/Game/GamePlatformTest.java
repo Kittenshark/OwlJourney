@@ -215,5 +215,12 @@ public class GamePlatformTest {
         assertFalse("Goal was hit when not intented", game.hitGoal());
     }
     
+    @Test
+    public void losingLifeandLifeReturnsRightAmount(){
+        game.takeLives();
+        
+        assertEquals(2, game.getLifePoints());
+    }
+    
     
 }

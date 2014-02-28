@@ -1,9 +1,9 @@
+
+
+package owljourneygame.parts;
 /**
  * X and Y coordinates
  */
-
-package owljourneygame.parts;
-
 public class Dot {
     protected int x;
     protected int y;

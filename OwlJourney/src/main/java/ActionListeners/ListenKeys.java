@@ -1,6 +1,4 @@
-/**
- * KeyListener that listens keys a, s, d, w, 1 and 2
- */
+
 
 package ActionListeners;
 
@@ -9,14 +7,15 @@ import java.awt.event.KeyListener;
 import owljourneygame.Game.GamePlatform;
 import owljourneygame.Game.MoveSide;
 
-
+/**
+ * KeyListener that listens keys a, s, d, w, 1 and 2
+ */
 public class ListenKeys implements KeyListener{
     GamePlatform game;
 
     
     public ListenKeys(GamePlatform game){
         this.game = game;
-        //this.owl = owl;
     }
 
     @Override
@@ -25,7 +24,8 @@ public class ListenKeys implements KeyListener{
 
     @Override
     public void keyPressed(KeyEvent e) {
-        if (e.getKeyCode() == KeyEvent.VK_D){
+        if (!game.getBoom()){
+          if (e.getKeyCode() == KeyEvent.VK_D){
             game.getOwl().setOwlDirection(MoveSide.R);
             game.setIsItMovingTime(true);
         } 
@@ -54,7 +54,6 @@ public class ListenKeys implements KeyListener{
                 game.getOwl().loseEnergy(20);
             }    
         }
-        
         if (e.getKeyCode() == KeyEvent.VK_3){
             game.getOwl().setOwlDirection(MoveSide.U);
             if (game.getOwl().getEnergy() >= 50){
@@ -65,6 +64,13 @@ public class ListenKeys implements KeyListener{
               game.getOwl().loseEnergy(50);
             }
             
+        }
+        }
+        
+        
+        if (e.getKeyCode() == KeyEvent.VK_4){
+            game.repaintField();
+            game.setBoom(false);
         }
         
         //oikea 0, vasen 1, alas 2, ylös 3

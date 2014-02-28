@@ -1,7 +1,4 @@
-/**
- * Level
- * Combines all information game needs to know about specific level. Keeps information of mines and walls.
- */
+
 
 package owljourneygame.levels;
 
@@ -10,7 +7,10 @@ import owljourneygame.parts.FinishLine;
 import owljourneygame.parts.Mine;
 import owljourneygame.parts.Wall;
 
-
+/**
+ * Level information.
+ * Combines all information game needs to know about specific level. Keeps information of mines and walls.
+ */
 public class AllLevels {
     FinishLine goal;
     ArrayList<Mine> mines;

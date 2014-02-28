@@ -1,11 +1,11 @@
-/**
- * Wall. Limits area where owl can move
- */
+
 package owljourneygame.parts;
 
 import java.awt.Rectangle;
 
-
+/**
+ * Wall. Limits area where owl can move
+ */
 public class Wall extends Dot{
     /**
      * Width of the wall

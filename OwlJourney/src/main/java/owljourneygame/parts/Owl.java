@@ -1,11 +1,12 @@
-/**
- * Main character of the game. Owl has coordinates and size.
- */
+
 package owljourneygame.parts;
 
 import java.awt.Rectangle;
 import owljourneygame.Game.MoveSide;
 
+/**
+ * Main character of the game. Owl has coordinates and size.
+ */
 public class Owl{
     /**
      * Determines size of the Owl

@@ -1,7 +1,4 @@
-/**
- * Main game happens here.
- * Logic of the game is implemented here
- */
+
 package owljourneygame.Game;
 
 import java.awt.Rectangle;
@@ -14,6 +11,10 @@ import owljourneygame.parts.Mine;
 import owljourneygame.parts.Owl;
 import owljourneygame.parts.Wall;
 
+/**
+ * Main game happens here.
+ * Logic of the game is implemented here
+ */
 public class GamePlatform {
     /**
      * Includes all playable levels
@@ -35,6 +36,7 @@ public class GamePlatform {
     private HoldLevel createL;
     private UserInterface draw;
     private boolean gameover = false;
+    private boolean boom = false;
     
     public GamePlatform(){
         createL = new HoldLevel();
@@ -92,6 +94,10 @@ public class GamePlatform {
     
     public boolean getGameOver(){
         return gameover;
+    }
+    
+    public boolean getBoom(){
+        return boom;
     }
     
     /**
@@ -209,6 +215,7 @@ public class GamePlatform {
         }
         
         if (hitMine()){
+            boom = true;
             takeLives();
         }   
         
@@ -220,8 +227,12 @@ public class GamePlatform {
         
         isItMovingTime = false;
            
-        draw.letsPaint(); 
+        repaintField(); 
     }   
+    
+    public void repaintField(){
+        draw.letsPaint();
+    }
     
     public void setDraw(UserInterface face){
         this.draw = face;
@@ -229,5 +240,9 @@ public class GamePlatform {
     
     public void setIsItMovingTime(boolean moveOrNot){
         isItMovingTime = moveOrNot;
+    }
+    
+    public void setBoom(boolean boom){
+        this.boom = boom;
     }
 }

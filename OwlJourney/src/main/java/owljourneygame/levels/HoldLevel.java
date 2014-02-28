@@ -1,8 +1,4 @@
-/**
- * Keeps all levels
- * Has information of all parts the game needs to create levels
- * Includes all mines, walls
- */
+
 
 package owljourneygame.levels;
 
@@ -10,7 +6,11 @@ import java.util.ArrayList;
 import owljourneygame.parts.Mine;
 import owljourneygame.parts.Wall;
 
-
+/**
+ * Keeps all levels
+ * Has information of all parts the game needs to create levels
+ * Includes all mines, walls
+ */
 public class HoldLevel {
     ArrayList<Mine> zeroMine;
     ArrayList<Wall> oneWall;

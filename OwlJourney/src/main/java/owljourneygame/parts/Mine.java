@@ -1,10 +1,11 @@
-/**
- * Mines are devils of the game. Mine can be visible or invisible.
- */
+
 package owljourneygame.parts;
 
 import java.awt.Rectangle;
 
+/**
+ * Mines are devils of the game. Mine can be visible or invisible.
+ */
 public class Mine extends Dot{
     /**
      * Determines the size of the of the mine
