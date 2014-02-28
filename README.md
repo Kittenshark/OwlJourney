@@ -1,5 +1,5 @@
 OwlJorney
-
-Where to go, no one knows.
 =========
+
+Jar ei taidai toimia. Main class ei loydy muilla koneilla. Posiitiivista: kuvat ainakin toimivat
 
